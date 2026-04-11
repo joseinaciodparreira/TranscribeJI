@@ -1,0 +1,7 @@
+{
+  "name": "TranscribeAI",
+  "description": "A powerful transcription tool that converts audio and video files or links into accurate text using Gemini AI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
