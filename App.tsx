@@ -11,7 +11,9 @@ import {
   Play,
   Clock,
   ChevronRight,
-  Info
+  Info,
+  Settings as SettingsIcon,
+  X
 } from 'lucide-react';
 import { AppStatus, TranscriptionEntry } from './types';
 import { transcribeMedia, transcribeFromLink } from './services/geminiService';
@@ -26,8 +28,12 @@ const App: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'upload' | 'link'>('upload');
   const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [apiKey, setApiKey] = useState('');
+  const [modelName, setModelName] = useState('gemini-3-flash-preview');
+  const [usageStats, setUsageStats] = useState({ requests: 0, totalChars: 0 });
 
-  // Load history from localStorage
+  // Load history and settings from localStorage
   useEffect(() => {
     const savedHistory = localStorage.getItem('transcription_history');
     if (savedHistory) {
@@ -37,6 +43,21 @@ const App: React.FC = () => {
         console.error("Failed to parse history", e);
       }
     }
+
+    const savedApiKey = localStorage.getItem('gemini_api_key');
+    if (savedApiKey) setApiKey(savedApiKey);
+
+    const savedModel = localStorage.getItem('gemini_model_name');
+    if (savedModel) setModelName(savedModel);
+
+    const savedStats = localStorage.getItem('transcription_usage_stats');
+    if (savedStats) {
+      try {
+        setUsageStats(JSON.parse(savedStats));
+      } catch (e) {
+        console.error("Failed to parse stats", e);
+      }
+    }
   }, []);
 
   // Save history to localStorage
@@ -44,13 +65,27 @@ const App: React.FC = () => {
     localStorage.setItem('transcription_history', JSON.stringify(history));
   }, [history]);
 
+  // Save stats to localStorage
+  useEffect(() => {
+    localStorage.setItem('transcription_usage_stats', JSON.stringify(usageStats));
+  }, [usageStats]);
+
+  // Save settings to localStorage
+  const saveSettings = (newApiKey: string, newModel: string) => {
+    setApiKey(newApiKey);
+    setModelName(newModel);
+    localStorage.setItem('gemini_api_key', newApiKey);
+    localStorage.setItem('gemini_model_name', newModel);
+    setShowSettings(false);
+  };
+
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     // Basic size check (browser limits for base64 strings)
     if (file.size > 20 * 1024 * 1024) {
-      setErrorMessage("File too large. Please limit to 20MB for direct processing.");
+      setErrorMessage("Arquivo muito grande. Por favor, limite a 20MB para processamento direto.");
       return;
     }
 
@@ -65,7 +100,7 @@ const App: React.FC = () => {
 
       try {
         setStatus(AppStatus.TRANSCRIBING);
-        const text = await transcribeMedia(base64Data, mimeType, file.name);
+        const text = await transcribeMedia(base64Data, mimeType, file.name, apiKey, modelName);
         
         const newEntry: TranscriptionEntry = {
           id: Date.now().toString(),
@@ -79,15 +114,19 @@ const App: React.FC = () => {
         setHistory(prev => [newEntry, ...prev]);
         setCurrentTranscription(text);
         setSelectedHistoryId(newEntry.id);
+        setUsageStats(prev => ({
+          requests: prev.requests + 1,
+          totalChars: prev.totalChars + text.length
+        }));
         setStatus(AppStatus.SUCCESS);
       } catch (err: any) {
-        setErrorMessage(err.message || "An error occurred during transcription.");
+        setErrorMessage(err.message || "Ocorreu um erro durante a transcrição.");
         setStatus(AppStatus.ERROR);
       }
     };
 
     reader.onerror = () => {
-      setErrorMessage("Failed to read the file.");
+      setErrorMessage("Falha ao ler o arquivo.");
       setStatus(AppStatus.ERROR);
     };
 
@@ -102,7 +141,7 @@ const App: React.FC = () => {
     setErrorMessage(null);
 
     try {
-      const text = await transcribeFromLink(linkInput);
+      const text = await transcribeFromLink(linkInput, apiKey, modelName);
       
       const newEntry: TranscriptionEntry = {
         id: Date.now().toString(),
@@ -115,10 +154,14 @@ const App: React.FC = () => {
       setHistory(prev => [newEntry, ...prev]);
       setCurrentTranscription(text);
       setSelectedHistoryId(newEntry.id);
+      setUsageStats(prev => ({
+        requests: prev.requests + 1,
+        totalChars: prev.totalChars + text.length
+      }));
       setStatus(AppStatus.SUCCESS);
       setLinkInput('');
     } catch (err: any) {
-      setErrorMessage(err.message || "Failed to transcribe from link.");
+      setErrorMessage(err.message || "Falha ao transcrever do link.");
       setStatus(AppStatus.ERROR);
     }
   };
@@ -152,19 +195,19 @@ const App: React.FC = () => {
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl text-indigo-600">
             <FileText className="w-6 h-6" />
-            <span>TranscribeAI</span>
+            <span>TrancribeJI</span>
           </div>
           <History className="w-5 h-5 text-slate-400" />
         </div>
         
         <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 px-2">History</h3>
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 px-2">Histórico</h3>
           {history.length === 0 ? (
             <div className="text-center py-10 px-4">
               <div className="bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <History className="w-6 h-6 text-slate-300" />
               </div>
-              <p className="text-sm text-slate-500">No transcriptions yet</p>
+              <p className="text-sm text-slate-500">Nenhuma transcrição ainda</p>
             </div>
           ) : (
             history.map(item => (
@@ -197,10 +240,22 @@ const App: React.FC = () => {
           )}
         </div>
         
-        <div className="p-4 border-t border-slate-100 text-center">
-          <p className="text-xs text-slate-400 flex items-center justify-center gap-1">
-            <Info size={12} /> Powered by Gemini 3 Flash
-          </p>
+        <div className="p-4 border-t border-slate-100 space-y-4">
+          <button 
+            onClick={() => setShowSettings(true)}
+            className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors border border-slate-200"
+          >
+            <SettingsIcon size={16} />
+            <span>Configurações</span>
+          </button>
+          <div className="text-center space-y-1">
+            <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1">
+              <Info size={10} /> Desenvolvido por Gemini 3 Flash
+            </p>
+            <p className="text-[10px] font-medium text-slate-500">
+              Criado por José Inácio D. Parreira
+            </p>
+          </div>
         </div>
       </aside>
 
@@ -209,8 +264,8 @@ const App: React.FC = () => {
         {/* Header/Inputs */}
         <header className="p-6 md:p-10 max-w-5xl w-full mx-auto space-y-8 overflow-y-auto flex-1 scroll-smooth">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Transcript your media</h1>
-            <p className="text-slate-500">Convert audio and video files or URLs into text instantly.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Transcreva sua mídia</h1>
+            <p className="text-slate-500">Converta arquivos de áudio e vídeo ou URLs em texto instantaneamente.</p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -219,13 +274,13 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab('upload')}
                 className={`flex-1 py-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'upload' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
-                Upload File
+                Enviar Arquivo
               </button>
               <button 
                 onClick={() => setActiveTab('link')}
                 className={`flex-1 py-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'link' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
-                Paste Link
+                Colar Link
               </button>
             </div>
 
@@ -244,9 +299,9 @@ const App: React.FC = () => {
                       <Upload className="w-8 h-8" />
                     </div>
                     <div className="space-y-1">
-                      <p className="font-semibold text-slate-700">Click or drag to upload</p>
-                      <p className="text-sm text-slate-500">Audio (MP3, WAV) or Video (MP4, MOV)</p>
-                      <p className="text-xs text-slate-400">Max size 20MB</p>
+                      <p className="font-semibold text-slate-700">Clique ou arraste para enviar</p>
+                      <p className="text-sm text-slate-500">Áudio (MP3, WAV) ou Vídeo (MP4, MOV)</p>
+                      <p className="text-xs text-slate-400">Tamanho máximo 20MB</p>
                     </div>
                   </div>
                 </div>
@@ -256,7 +311,7 @@ const App: React.FC = () => {
                     <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                     <input 
                       type="url" 
-                      placeholder="https://example.com/video.mp4 or YouTube URL"
+                      placeholder="https://exemplo.com/video.mp4 ou URL do YouTube"
                       value={linkInput}
                       onChange={(e) => setLinkInput(e.target.value)}
                       className="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
@@ -268,7 +323,7 @@ const App: React.FC = () => {
                     className="w-full py-4 text-lg" 
                     isLoading={status === AppStatus.TRANSCRIBING}
                   >
-                    Transcribe from Link
+                    Transcrever do Link
                   </Button>
                 </form>
               )}
@@ -287,10 +342,10 @@ const App: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <h2 className="text-xl font-bold text-slate-900">
-                  {status === AppStatus.UPLOADING ? "Reading file..." : "Transcribing content..."}
+                  {status === AppStatus.UPLOADING ? "Lendo arquivo..." : "Transcrevendo conteúdo..."}
                 </h2>
                 <p className="text-slate-500 max-w-sm mx-auto">
-                  Our AI is processing your media. This usually takes a few seconds to a minute depending on the length.
+                  Nossa IA está processando sua mídia. Isso geralmente leva de alguns segundos a um minuto, dependendo da duração.
                 </p>
               </div>
             </div>
@@ -302,14 +357,14 @@ const App: React.FC = () => {
                 <Info size={20} />
               </div>
               <div className="space-y-1">
-                <h3 className="font-semibold text-red-900">Transcription Failed</h3>
+                <h3 className="font-semibold text-red-900">Falha na Transcrição</h3>
                 <p className="text-sm text-red-700">{errorMessage}</p>
                 <Button 
                   variant="ghost" 
                   className="mt-2 text-red-700 hover:bg-red-100 p-0 text-sm font-bold"
                   onClick={() => setStatus(AppStatus.IDLE)}
                 >
-                  Try again
+                  Tentar novamente
                 </Button>
               </div>
             </div>
@@ -323,12 +378,12 @@ const App: React.FC = () => {
                   <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
                     <FileText size={16} />
                   </div>
-                  <h3 className="font-semibold text-slate-800">Transcription Result</h3>
+                  <h3 className="font-semibold text-slate-800">Resultado da Transcrição</h3>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button variant="ghost" className="h-9 px-3" onClick={copyToClipboard}>
                     {copied ? <Check size={16} className="text-green-500" /> : <Clipboard size={16} />}
-                    <span className="text-xs">{copied ? 'Copied' : 'Copy'}</span>
+                    <span className="text-xs">{copied ? 'Copiado' : 'Copiar'}</span>
                   </Button>
                 </div>
               </div>
@@ -341,6 +396,111 @@ const App: React.FC = () => {
           )}
         </header>
       </main>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+              <h3 className="font-bold text-slate-900 flex items-center gap-2">
+                <SettingsIcon size={18} className="text-indigo-600" />
+                Configurações
+              </h3>
+              <button 
+                onClick={() => setShowSettings(false)}
+                className="p-1 hover:bg-slate-100 rounded-full transition-colors"
+              >
+                <X size={20} className="text-slate-400" />
+              </button>
+            </div>
+            
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                saveSettings(
+                  formData.get('apiKey') as string,
+                  formData.get('modelName') as string
+                );
+              }}
+              className="p-6 space-y-6"
+            >
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-slate-700 block">
+                  Chave da API Gemini
+                </label>
+                <input 
+                  type="password" 
+                  name="apiKey"
+                  defaultValue={apiKey}
+                  placeholder="Cole sua chave da API aqui..."
+                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                />
+                <p className="text-[10px] text-slate-400">
+                  Se deixado em branco, o aplicativo usará a chave padrão do sistema (se configurada).
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-slate-700 block">
+                  Modelo da IA
+                </label>
+                <select 
+                  name="modelName"
+                  defaultValue={modelName}
+                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm bg-white"
+                >
+                  <option value="gemini-3-flash-preview">Gemini 3 Flash (Recomendado)</option>
+                  <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash</option>
+                  <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                  <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                </select>
+              </div>
+
+              <div className="p-4 bg-slate-50 rounded-xl space-y-3 border border-slate-100">
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Uso Local (Estimado)</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <p className="text-[10px] text-slate-400">Total de Pedidos</p>
+                    <p className="text-lg font-bold text-slate-700">{usageStats.requests}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[10px] text-slate-400">Caracteres Gerados</p>
+                    <p className="text-lg font-bold text-slate-700">{usageStats.totalChars.toLocaleString()}</p>
+                  </div>
+                </div>
+                <div className="pt-2 border-t border-slate-200">
+                  <a 
+                    href="https://aistudio.google.com/app/plan_billing" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[10px] text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+                  >
+                    Ver saldo real no Google AI Studio <ChevronRight size={10} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="pt-4 flex gap-3">
+                <Button 
+                  type="button" 
+                  variant="ghost" 
+                  className="flex-1"
+                  onClick={() => setShowSettings(false)}
+                >
+                  Cancelar
+                </Button>
+                <Button 
+                  type="submit" 
+                  className="flex-1"
+                >
+                  Salvar Alterações
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

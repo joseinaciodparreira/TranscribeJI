@@ -1,0 +1,135 @@
+[
+  {
+    "id": 0,
+    "author": "user",
+    "payload": {
+      "type": "text",
+      "text": "crie um aplicativo web para transcrever qualquer arquivo em texto, sendo audio, video etc.\ncom opção para fazer upload do arquivo ou colar o link e historico de transcrições\n",
+      "files": [],
+      "fileUploads": [],
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770923128,
+      "nanos": 220000000
+    }
+  },
+  {
+    "id": 1,
+    "author": "model",
+    "payload": {
+      "type": "thinking",
+      "text": "**Envisioning the Web App**\n\nI'm starting to visualize this transcription web app. I'm focusing on user experience, especially how to make the upload/link process seamless. I need to make sure the transcription history is accessible and intuitive, and I'm already thinking about a sleek, modern aesthetic that meets world-class senior frontend engineer standards. I'm prioritizing performance and responsiveness, too.\n\n\n**Defining the Tech Stack**\n\nI've solidified the tech stack: React 18+, TypeScript, and Tailwind CSS will be the frontend foundation. For transcription, I'll leverage the Gemini API (`@google/genai`) using `gemini-3-flash-preview` for speed and accuracy. Lucide React will provide the icons. Local storage will handle history. I'm focusing on a responsive design. I'm also planning the upload/link process using `<input type=\"file\">` and base64. For links, I'm leaning toward using Gemini with `inlineData` due to multimodal capabilities.\n\n\n**Refining the File Handling**\n\nI'm now zeroing in on file transcription. Large video files could hit base64 limits, so I'll add a warning or a file size limit. History will definitely go into `localStorage`. I'm structuring the project with specific files in mind: metadata, index, app, components, services, and types.\n\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770923128,
+      "nanos": 220000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770923137,
+      "nanos": 151000000
+    }
+  },
+  {
+    "id": 2,
+    "author": "model",
+    "payload": {
+      "type": "generationTable",
+      "entries": [
+        {
+          "path": "metadata.json",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Application metadata including name, description and permissions.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\n{\n  \"name\": \"TranscribeAI\",\n  \"description\": \"A powerful transcription tool that converts audio and video files or links into accurate text using Gemini AI.\",\n  \"requestFramePermissions\": [\n    \"microphone\"\n  ]\n}\n"
+            }
+          ]
+        },
+        {
+          "path": "index.html",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Primary HTML entry point with Tailwind CSS and Font configuration.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>TranscribeAI - Audio & Video Transcription</title>\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n  <style>\n    body {\n      font-family: 'Inter', sans-serif;\n    }\n  </style>\n</head>\n<body class=\"bg-slate-50 text-slate-900\">\n  <div id=\"root\"></div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        {
+          "path": "index.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Application entry point initializing React 18+.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nconst rootElement = document.getElementById('root');\nif (!rootElement) {\n  throw new Error(\"Could not find root element to mount to\");\n}\n\nconst root = ReactDOM.createRoot(rootElement);\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n"
+            }
+          ]
+        },
+        {
+          "path": "types.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "TypeScript interfaces for the application.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nexport interface TranscriptionEntry {\n  id: string;\n  name: string;\n  type: 'file' | 'link';\n  mimeType?: string;\n  text: string;\n  timestamp: number;\n  duration?: string;\n}\n\nexport enum AppStatus {\n  IDLE = 'idle',\n  UPLOADING = 'uploading',\n  TRANSCRIBING = 'transcribing',\n  ERROR = 'error',\n  SUCCESS = 'success'\n}\n"
+            }
+          ]
+        },
+        {
+          "path": "services/geminiService.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Service for interacting with Gemini API for transcription.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport { GoogleGenAI } from \"@google/genai\";\n\nconst API_KEY = process.env.API_KEY || \"\";\n\nexport const transcribeMedia = async (\n  base64Data: string,\n  mimeType: string,\n  fileName: string\n): Promise<string> => {\n  if (!API_KEY) {\n    throw new Error(\"API Key is not configured.\");\n  }\n\n  const ai = new GoogleGenAI({ apiKey: API_KEY });\n  \n  const prompt = `Transcribe the following ${mimeType.startsWith('audio') ? 'audio' : 'video'} content accurately. \n  If possible, identify different speakers. \n  Maintain the original language and punctuation. \n  If the file contains no speech, state \"No speech detected\".`;\n\n  const response = await ai.models.generateContent({\n    model: \"gemini-3-flash-preview\",\n    contents: [\n      {\n        parts: [\n          {\n            inlineData: {\n              data: base64Data,\n              mimeType: mimeType,\n            },\n          },\n          { text: prompt },\n        ],\n      },\n    ],\n  });\n\n  if (!response.text) {\n    throw new Error(\"No transcription text returned from the model.\");\n  }\n\n  return response.text;\n};\n\nexport const transcribeFromLink = async (url: string): Promise<string> => {\n  if (!API_KEY) {\n    throw new Error(\"API Key is not configured.\");\n  }\n\n  const ai = new GoogleGenAI({ apiKey: API_KEY });\n  \n  const prompt = `Please analyze the content at this URL: ${url}. \n  If it is a video or audio file link, transcribe its contents accurately. \n  If it is a YouTube link, summarize the video content in detail as a transcription.\n  Provide a clean, readable text output.`;\n\n  const response = await ai.models.generateContent({\n    model: \"gemini-3-flash-preview\",\n    contents: prompt,\n    config: {\n      tools: [{ googleSearch: {} }] // Use search grounding to help if the URL is web-based\n    }\n  });\n\n  if (!response.text) {\n    throw new Error(\"Failed to generate transcription from the provided link.\");\n  }\n\n  return response.text;\n};\n"
+            }
+          ]
+        },
+        {
+          "path": "components/Button.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "A reusable button component with different variants.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\n\ninterface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: 'primary' | 'secondary' | 'danger' | 'ghost';\n  isLoading?: boolean;\n}\n\nconst Button: React.FC<ButtonProps> = ({ \n  children, \n  variant = 'primary', \n  isLoading, \n  className = '', \n  ...props \n}) => {\n  const baseStyles = \"px-4 py-2 rounded-lg font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed\";\n  \n  const variants = {\n    primary: \"bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95 shadow-sm\",\n    secondary: \"bg-slate-200 text-slate-800 hover:bg-slate-300 active:scale-95\",\n    danger: \"bg-red-500 text-white hover:bg-red-600 active:scale-95 shadow-sm\",\n    ghost: \"bg-transparent text-slate-600 hover:bg-slate-100 active:scale-95\",\n  };\n\n  return (\n    <button \n      className={`${baseStyles} ${variants[variant]} ${className}`} \n      disabled={isLoading || props.disabled}\n      {...props}\n    >\n      {isLoading ? (\n        <svg className=\"animate-spin h-5 w-5 text-current\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\">\n          <circle className=\"opacity-25\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"4\"></circle>\n          <path className=\"opacity-75\" fill=\"currentColor\" d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"></path>\n        </svg>\n      ) : children}\n    </button>\n  );\n};\n\nexport default Button;\n"
+            }
+          ]
+        },
+        {
+          "path": "App.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Main application component managing state and layout.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { \n  FileText, \n  Upload, \n  Link as LinkIcon, \n  History, \n  Trash2, \n  Clipboard, \n  Check,\n  Play,\n  Clock,\n  ChevronRight,\n  Info\n} from 'lucide-react';\nimport { AppStatus, TranscriptionEntry } from './types';\nimport { transcribeMedia, transcribeFromLink } from './services/geminiService';\nimport Button from './components/Button';\n\nconst App: React.FC = () => {\n  const [status, setStatus] = useState<AppStatus>(AppStatus.IDLE);\n  const [errorMessage, setErrorMessage] = useState<string | null>(null);\n  const [currentTranscription, setCurrentTranscription] = useState<string | null>(null);\n  const [linkInput, setLinkInput] = useState('');\n  const [history, setHistory] = useState<TranscriptionEntry[]>([]);\n  const [copied, setCopied] = useState(false);\n  const [activeTab, setActiveTab] = useState<'upload' | 'link'>('upload');\n  const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);\n\n  // Load history from localStorage\n  useEffect(() => {\n    const savedHistory = localStorage.getItem('transcription_history');\n    if (savedHistory) {\n      try {\n        setHistory(JSON.parse(savedHistory));\n      } catch (e) {\n        console.error(\"Failed to parse history\", e);\n      }\n    }\n  }, []);\n\n  // Save history to localStorage\n  useEffect(() => {\n    localStorage.setItem('transcription_history', JSON.stringify(history));\n  }, [history]);\n\n  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {\n    const file = event.target.files?.[0];\n    if (!file) return;\n\n    // Basic size check (browser limits for base64 strings)\n    if (file.size > 20 * 1024 * 1024) {\n      setErrorMessage(\"File too large. Please limit to 20MB for direct processing.\");\n      return;\n    }\n\n    setStatus(AppStatus.UPLOADING);\n    setErrorMessage(null);\n\n    const reader = new FileReader();\n    reader.onload = async (e) => {\n      const result = e.target?.result as string;\n      const base64Data = result.split(',')[1];\n      const mimeType = file.type;\n\n      try {\n        setStatus(AppStatus.TRANSCRIBING);\n        const text = await transcribeMedia(base64Data, mimeType, file.name);\n        \n        const newEntry: TranscriptionEntry = {\n          id: Date.now().toString(),\n          name: file.name,\n          type: 'file',\n          mimeType,\n          text,\n          timestamp: Date.now(),\n        };\n\n        setHistory(prev => [newEntry, ...prev]);\n        setCurrentTranscription(text);\n        setSelectedHistoryId(newEntry.id);\n        setStatus(AppStatus.SUCCESS);\n      } catch (err: any) {\n        setErrorMessage(err.message || \"An error occurred during transcription.\");\n        setStatus(AppStatus.ERROR);\n      }\n    };\n\n    reader.onerror = () => {\n      setErrorMessage(\"Failed to read the file.\");\n      setStatus(AppStatus.ERROR);\n    };\n\n    reader.readAsDataURL(file);\n  };\n\n  const handleLinkSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    if (!linkInput.trim()) return;\n\n    setStatus(AppStatus.TRANSCRIBING);\n    setErrorMessage(null);\n\n    try {\n      const text = await transcribeFromLink(linkInput);\n      \n      const newEntry: TranscriptionEntry = {\n        id: Date.now().toString(),\n        name: linkInput.length > 30 ? linkInput.substring(0, 27) + \"...\" : linkInput,\n        type: 'link',\n        text,\n        timestamp: Date.now(),\n      };\n\n      setHistory(prev => [newEntry, ...prev]);\n      setCurrentTranscription(text);\n      setSelectedHistoryId(newEntry.id);\n      setStatus(AppStatus.SUCCESS);\n      setLinkInput('');\n    } catch (err: any) {\n      setErrorMessage(err.message || \"Failed to transcribe from link.\");\n      setStatus(AppStatus.ERROR);\n    }\n  };\n\n  const copyToClipboard = () => {\n    if (currentTranscription) {\n      navigator.clipboard.writeText(currentTranscription);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 2000);\n    }\n  };\n\n  const deleteHistoryItem = (id: string, e: React.MouseEvent) => {\n    e.stopPropagation();\n    setHistory(prev => prev.filter(item => item.id !== id));\n    if (selectedHistoryId === id) {\n      setCurrentTranscription(null);\n      setSelectedHistoryId(null);\n    }\n  };\n\n  const selectHistoryItem = (item: TranscriptionEntry) => {\n    setCurrentTranscription(item.text);\n    setSelectedHistoryId(item.id);\n  };\n\n  return (\n    <div className=\"min-h-screen flex flex-col md:flex-row bg-slate-50\">\n      {/* Sidebar - History */}\n      <aside className=\"w-full md:w-80 border-r border-slate-200 bg-white flex flex-col shrink-0\">\n        <div className=\"p-6 border-b border-slate-100 flex items-center justify-between\">\n          <div className=\"flex items-center gap-2 font-bold text-xl text-indigo-600\">\n            <FileText className=\"w-6 h-6\" />\n            <span>TranscribeAI</span>\n          </div>\n          <History className=\"w-5 h-5 text-slate-400\" />\n        </div>\n        \n        <div className=\"flex-1 overflow-y-auto p-4 space-y-2\">\n          <h3 className=\"text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 px-2\">History</h3>\n          {history.length === 0 ? (\n            <div className=\"text-center py-10 px-4\">\n              <div className=\"bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3\">\n                <History className=\"w-6 h-6 text-slate-300\" />\n              </div>\n              <p className=\"text-sm text-slate-500\">No transcriptions yet</p>\n            </div>\n          ) : (\n            history.map(item => (\n              <div \n                key={item.id}\n                onClick={() => selectHistoryItem(item)}\n                className={`group p-3 rounded-xl cursor-pointer transition-all border ${\n                  selectedHistoryId === item.id \n                    ? 'bg-indigo-50 border-indigo-100 text-indigo-900' \n                    : 'bg-transparent border-transparent hover:bg-slate-50 text-slate-700'\n                }`}\n              >\n                <div className=\"flex items-start justify-between\">\n                  <div className=\"flex flex-col gap-1 overflow-hidden\">\n                    <span className=\"text-sm font-medium truncate pr-4\">{item.name}</span>\n                    <div className=\"flex items-center gap-2 text-[10px] text-slate-400\">\n                      {item.type === 'file' ? <Upload size={10} /> : <LinkIcon size={10} />}\n                      <span>{new Date(item.timestamp).toLocaleDateString()}</span>\n                    </div>\n                  </div>\n                  <button \n                    onClick={(e) => deleteHistoryItem(item.id, e)}\n                    className=\"opacity-0 group-hover:opacity-100 p-1 hover:text-red-500 transition-opacity\"\n                  >\n                    <Trash2 size={14} />\n                  </button>\n                </div>\n              </div>\n            ))\n          )}\n        </div>\n        \n        <div className=\"p-4 border-t border-slate-100 text-center\">\n          <p className=\"text-xs text-slate-400 flex items-center justify-center gap-1\">\n            <Info size={12} /> Powered by Gemini 3 Flash\n          </p>\n        </div>\n      </aside>\n\n      {/* Main Content */}\n      <main className=\"flex-1 flex flex-col h-screen overflow-hidden\">\n        {/* Header/Inputs */}\n        <header className=\"p-6 md:p-10 max-w-5xl w-full mx-auto space-y-8 overflow-y-auto flex-1 scroll-smooth\">\n          <div className=\"space-y-2\">\n            <h1 className=\"text-3xl font-bold tracking-tight text-slate-900\">Transcript your media</h1>\n            <p className=\"text-slate-500\">Convert audio and video files or URLs into text instantly.</p>\n          </div>\n\n          <div className=\"bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden\">\n            <div className=\"flex border-b border-slate-100\">\n              <button \n                onClick={() => setActiveTab('upload')}\n                className={`flex-1 py-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'upload' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}\n              >\n                Upload File\n              </button>\n              <button \n                onClick={() => setActiveTab('link')}\n                className={`flex-1 py-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'link' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}\n              >\n                Paste Link\n              </button>\n            </div>\n\n            <div className=\"p-8\">\n              {activeTab === 'upload' ? (\n                <div className=\"relative border-2 border-dashed border-slate-200 rounded-xl p-8 transition-colors hover:border-indigo-300 group\">\n                  <input \n                    type=\"file\" \n                    accept=\"audio/*,video/*\"\n                    onChange={handleFileUpload}\n                    className=\"absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10\"\n                    disabled={status === AppStatus.TRANSCRIBING || status === AppStatus.UPLOADING}\n                  />\n                  <div className=\"flex flex-col items-center text-center space-y-4\">\n                    <div className=\"w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform\">\n                      <Upload className=\"w-8 h-8\" />\n                    </div>\n                    <div className=\"space-y-1\">\n                      <p className=\"font-semibold text-slate-700\">Click or drag to upload</p>\n                      <p className=\"text-sm text-slate-500\">Audio (MP3, WAV) or Video (MP4, MOV)</p>\n                      <p className=\"text-xs text-slate-400\">Max size 20MB</p>\n                    </div>\n                  </div>\n                </div>\n              ) : (\n                <form onSubmit={handleLinkSubmit} className=\"space-y-4\">\n                  <div className=\"relative\">\n                    <LinkIcon className=\"absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5\" />\n                    <input \n                      type=\"url\" \n                      placeholder=\"https://example.com/video.mp4 or YouTube URL\"\n                      value={linkInput}\n                      onChange={(e) => setLinkInput(e.target.value)}\n                      className=\"w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all\"\n                      required\n                    />\n                  </div>\n                  <Button \n                    type=\"submit\" \n                    className=\"w-full py-4 text-lg\" \n                    isLoading={status === AppStatus.TRANSCRIBING}\n                  >\n                    Transcribe from Link\n                  </Button>\n                </form>\n              )}\n            </div>\n          </div>\n\n          {/* Loading / Error States */}\n          {(status === AppStatus.TRANSCRIBING || status === AppStatus.UPLOADING) && (\n            <div className=\"bg-white rounded-2xl shadow-sm border border-slate-200 p-12 text-center space-y-6\">\n              <div className=\"relative w-24 h-24 mx-auto\">\n                <div className=\"absolute inset-0 border-4 border-slate-100 rounded-full\"></div>\n                <div className=\"absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin\"></div>\n                <div className=\"absolute inset-0 flex items-center justify-center\">\n                  <FileText className=\"w-8 h-8 text-indigo-600 animate-pulse\" />\n                </div>\n              </div>\n              <div className=\"space-y-2\">\n                <h2 className=\"text-xl font-bold text-slate-900\">\n                  {status === AppStatus.UPLOADING ? \"Reading file...\" : \"Transcribing content...\"}\n                </h2>\n                <p className=\"text-slate-500 max-w-sm mx-auto\">\n                  Our AI is processing your media. This usually takes a few seconds to a minute depending on the length.\n                </p>\n              </div>\n            </div>\n          )}\n\n          {status === AppStatus.ERROR && (\n            <div className=\"bg-red-50 border border-red-100 rounded-2xl p-6 flex items-start gap-4\">\n              <div className=\"bg-red-100 p-2 rounded-full text-red-600 shrink-0\">\n                <Info size={20} />\n              </div>\n              <div className=\"space-y-1\">\n                <h3 className=\"font-semibold text-red-900\">Transcription Failed</h3>\n                <p className=\"text-sm text-red-700\">{errorMessage}</p>\n                <Button \n                  variant=\"ghost\" \n                  className=\"mt-2 text-red-700 hover:bg-red-100 p-0 text-sm font-bold\"\n                  onClick={() => setStatus(AppStatus.IDLE)}\n                >\n                  Try again\n                </Button>\n              </div>\n            </div>\n          )}\n\n          {/* Result Section */}\n          {currentTranscription && status !== AppStatus.TRANSCRIBING && (\n            <div className=\"bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col\">\n              <div className=\"px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50\">\n                <div className=\"flex items-center gap-2\">\n                  <div className=\"w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white\">\n                    <FileText size={16} />\n                  </div>\n                  <h3 className=\"font-semibold text-slate-800\">Transcription Result</h3>\n                </div>\n                <div className=\"flex items-center gap-2\">\n                  <Button variant=\"ghost\" className=\"h-9 px-3\" onClick={copyToClipboard}>\n                    {copied ? <Check size={16} className=\"text-green-500\" /> : <Clipboard size={16} />}\n                    <span className=\"text-xs\">{copied ? 'Copied' : 'Copy'}</span>\n                  </Button>\n                </div>\n              </div>\n              <div className=\"p-8 prose prose-slate max-w-none prose-p:leading-relaxed prose-p:text-slate-700\">\n                <div className=\"whitespace-pre-wrap font-normal text-slate-700 leading-relaxed\">\n                  {currentTranscription}\n                </div>\n              </div>\n            </div>\n          )}\n        </header>\n      </main>\n    </div>\n  );\n};\n\nexport default App;\n"
+            }
+          ]
+        }
+      ]
+    },
+    "createdTimestamp": {
+      "seconds": 1770923137,
+      "nanos": 152000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770923137,
+      "nanos": 935000000
+    }
+  }
+]

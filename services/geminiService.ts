@@ -1,26 +1,28 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
+const DEFAULT_API_KEY = process.env.API_KEY || "";
 
 export const transcribeMedia = async (
   base64Data: string,
   mimeType: string,
-  fileName: string
+  fileName: string,
+  apiKey: string = DEFAULT_API_KEY,
+  modelName: string = "gemini-3-flash-preview"
 ): Promise<string> => {
-  if (!API_KEY) {
-    throw new Error("API Key is not configured.");
+  if (!apiKey) {
+    throw new Error("A chave da API não está configurada.");
   }
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey });
   
-  const prompt = `Transcribe the following ${mimeType.startsWith('audio') ? 'audio' : 'video'} content accurately. 
-  If possible, identify different speakers. 
-  Maintain the original language and punctuation. 
-  If the file contains no speech, state "No speech detected".`;
+  const prompt = `Transcreva o seguinte conteúdo de ${mimeType.startsWith('audio') ? 'áudio' : 'vídeo'} com precisão. 
+  Se possível, identifique diferentes falantes. 
+  Mantenha o idioma original e a pontuação. 
+  Se o arquivo não contiver fala, escreva "Nenhuma fala detectada".`;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    model: modelName,
     contents: [
       {
         parts: [
@@ -37,26 +39,30 @@ export const transcribeMedia = async (
   });
 
   if (!response.text) {
-    throw new Error("No transcription text returned from the model.");
+    throw new Error("Nenhum texto de transcrição retornado pelo modelo.");
   }
 
   return response.text;
 };
 
-export const transcribeFromLink = async (url: string): Promise<string> => {
-  if (!API_KEY) {
-    throw new Error("API Key is not configured.");
+export const transcribeFromLink = async (
+  url: string,
+  apiKey: string = DEFAULT_API_KEY,
+  modelName: string = "gemini-3-flash-preview"
+): Promise<string> => {
+  if (!apiKey) {
+    throw new Error("A chave da API não está configurada.");
   }
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey });
   
-  const prompt = `Please analyze the content at this URL: ${url}. 
-  If it is a video or audio file link, transcribe its contents accurately. 
-  If it is a YouTube link, summarize the video content in detail as a transcription.
-  Provide a clean, readable text output.`;
+  const prompt = `Por favor, analise o conteúdo nesta URL: ${url}. 
+  Se for um link de arquivo de vídeo ou áudio, transcreva seu conteúdo com precisão. 
+  Se for um link do YouTube, resuma o conteúdo do vídeo em detalhes como uma transcrição.
+  Forneça uma saída de texto limpa e legível.`;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    model: modelName,
     contents: prompt,
     config: {
       tools: [{ googleSearch: {} }] // Use search grounding to help if the URL is web-based
@@ -64,7 +70,7 @@ export const transcribeFromLink = async (url: string): Promise<string> => {
   });
 
   if (!response.text) {
-    throw new Error("Failed to generate transcription from the provided link.");
+    throw new Error("Falha ao gerar transcrição a partir do link fornecido.");
   }
 
   return response.text;

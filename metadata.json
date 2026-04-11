@@ -1,6 +1,6 @@
 {
-  "name": "TranscribeAI",
-  "description": "A powerful transcription tool that converts audio and video files or links into accurate text using Gemini AI.",
+  "name": "TrancribeJI",
+  "description": "Uma ferramenta poderosa de transcrição que converte arquivos de áudio e vídeo ou links em texto preciso usando a IA do Gemini.",
   "requestFramePermissions": [
     "microphone"
   ]
