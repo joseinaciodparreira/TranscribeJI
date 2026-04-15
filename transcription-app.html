@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TranscribeApp - Transcrição de Áudio e Vídeo</title>
+    
+    <!-- Space Grotesk Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fafafa;
+            --bg-secondary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #737373;
+            --border: #e5e5e5;
+            --accent: #1a1a1a;
+            --accent-hover: #404040;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            font-weight: 400;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--bg-primary);
+        }
+
+        .upload-zone:hover {
+            border-color: var(--text-secondary);
+            background: #f5f5f5;
+        }
+
+        .upload-zone.dragover {
+            border-color: var(--accent);
+            background: #f0f0f0;
+        }
+
+        .upload-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        .upload-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .upload-hint {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab.active {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        .result-area {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 200px;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .result-placeholder {
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-badge.processing {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-badge.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .file-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .file-details {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .file-size {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .remove-file {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .remove-file:hover {
+            opacity: 1;
+        }
+
+        .history-list {
+            list-style: none;
+        }
+
+        .history-item {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .history-item:hover {
+            background: var(--bg-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .history-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .history-preview {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .settings-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .copy-btn {
+            margin-left: auto;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .copy-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TranscribeApp</h1>
+            <p class="subtitle">Transcreva áudios e vídeos com inteligência artificial</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="upload">Upload</button>
+            <button class="tab" data-tab="url">URL</button>
+            <button class="tab" data-tab="history">Histórico</button>
+            <button class="tab" data-tab="settings">Configurações</button>
+        </div>
+
+        <!-- Upload Tab -->
+        <div id="upload-tab" class="tab-content">
+            <div class="card">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Enviar Arquivo
+                </h2>
+                
+                <div class="upload-zone" id="uploadZone">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/>
+                    </svg>
+                    <p class="upload-text">Arraste e solte seu arquivo aqui</p>
+                    <p class="upload-hint">ou clique para selecionar (MP3, WAV, MP4, MOV - até 20MB)</p>
+                    <input type="file" id="fileInput" accept=".mp3,.wav,.m4a,.mp4,.mov,.webm" style="display: none;">
+                </div>
+
+                <div id="fileInfo" class="file-info hidden">
+                    <div class="file-icon" id="fileIcon">📄</div>
+                    <div class="file-details">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                    <button class="remove-file" id="removeFile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="transcribeBtn">
+                        Transcrever
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- URL Tab -->
+        <div id="url-tab" class="tab-content hidden">
+            <div class="card">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                    Transcrever por URL
+                </h2>
+                
+                <div class="input-group">
+                    <label class="input-label">URL do vídeo ou áudio</label>
+                    <input type="url" class="text-input" id="urlInput" placeholder="https://youtube.com/watch?v=... ou link direto para arquivo">
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="transcribeUrlBtn">
+                        Transcrever
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="result-section" class="card hidden">
+            <h2 class="section-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                Transcrição
+                <span id="statusBadge" class="status-badge hidden"></span>
+            </h2>
+            
+            <div class="result-area" id="resultArea">
+                <div class="result-placeholder">
+                    Sua transcrição aparecerá aqui
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-secondary copy-btn" id="copyBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    Copiar
+                </button>
+            </div>
+        </div>
+
+        <!-- History Tab -->
+        <div id="history-tab" class="tab-content hidden">
+            <div class="card">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Histórico
+                </h2>
+                
+                <ul class="history-list" id="historyList">
+                    <li class="result-placeholder">Nenhuma transcrição ainda</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content hidden">
+            <div class="card">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                    Configurações
+                </h2>
+                
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label class="input-label">Google Gemini API Key</label>
+                        <input type="password" class="text-input" id="apiKeyInput" placeholder="Cole sua API key aqui">
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 8px;">
+                            Obtenha sua chave em <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: var(--accent);">Google AI Studio</a>
+                        </p>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Modelo</label>
+                        <select class="text-input" id="modelSelect">
+                            <option value="gemini-1.5-flash">Gemini 1.5 Flash (Rápido)</option>
+                            <option value="gemini-1.5-pro">Gemini 1.5 Pro (Preciso)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Idioma</label>
+                        <select class="text-input" id="languageSelect">
+                            <option value="pt-BR">Português (Brasil)</option>
+                            <option value="en-US">Inglês (EUA)</option>
+                            <option value="es-ES">Espanhol</option>
+                            <option value="fr-FR">Francês</option>
+                            <option value="de-DE">Alemão</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="saveSettingsBtn">
+                        Salvar Configurações
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let selectedFile = null;
+        let history = JSON.parse(localStorage.getItem('transcriptionHistory') || '[]');
+        let settings = JSON.parse(localStorage.getItem('transcriptionSettings') || '{}');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSettings();
+            renderHistory();
+            setupEventListeners();
+        });
+
+        function loadSettings() {
+            if (settings.apiKey) document.getElementById('apiKeyInput').value = settings.apiKey;
+            if (settings.model) document.getElementById('modelSelect').value = settings.model;
+            if (settings.language) document.getElementById('languageSelect').value = settings.language;
+        }
+
+        function setupEventListeners() {
+            // Tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+
+            // Upload Zone
+            const uploadZone = document.getElementById('uploadZone');
+            const fileInput = document.getElementById('fileInput');
+
+            uploadZone.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.classList.remove('dragover');
+            });
+
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) handleFile(files[0]);
+            });
+
+            // Remove File
+            document.getElementById('removeFile').addEventListener('click', removeFile);
+
+            // Transcribe Buttons
+            document.getElementById('transcribeBtn').addEventListener('click', transcribeFile);
+            document.getElementById('transcribeUrlBtn').addEventListener('click', transcribeUrl);
+
+            // Copy Button
+            document.getElementById('copyBtn').addEventListener('click', copyResult);
+
+            // Save Settings
+            document.getElementById('saveSettingsBtn').addEventListener('click', saveSettings);
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        }
+
+        function handleFile(file) {
+            const maxSize = 20 * 1024 * 1024; // 20MB
+            if (file.size > maxSize) {
+                alert('Arquivo muito grande. Máximo 20MB.');
+                return;
+            }
+
+            selectedFile = file;
+            showFileInfo(file);
+        }
+
+        function showFileInfo(file) {
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            document.getElementById('fileIcon').textContent = getFileIcon(file.name);
+            document.getElementById('fileInfo').classList.remove('hidden');
+            document.getElementById('uploadZone').classList.add('hidden');
+        }
+
+        function removeFile() {
+            selectedFile = null;
+            document.getElementById('fileInput').value = '';
+            document.getElementById('fileInfo').classList.add('hidden');
+            document.getElementById('uploadZone').classList.remove('hidden');
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const icons = { mp3: '🎵', wav: '🎵', m4a: '🎵', mp4: '🎬', mov: '🎬', webm: '🎬' };
+            return icons[ext] || '📄';
+        }
+
+        async function transcribeFile() {
+            if (!selectedFile) {
+                alert('Selecione um arquivo primeiro.');
+                return;
+            }
+
+            const apiKey = settings.apiKey;
+            if (!apiKey) {
+                alert('Configure sua API Key nas configurações.');
+                switchTab('settings');
+                return;
+            }
+
+            showResult('processando');
+            
+            try {
+                // Simulação de transcrição (substitua pela chamada real à API)
+                await simulateTranscription(selectedFile.name);
+                
+                const mockTranscription = `Esta é uma transcrição de exemplo do arquivo "${selectedFile.name}".
+                
+Na prática, você precisaria integrar com a API do Google Gemini ou outro serviço de transcrição para processar o arquivo de áudio/vídeo real.
+
+O fluxo seria:
+1. Upload do arquivo para um servidor
+2. Processamento pelo modelo de IA
+3. Retorno da transcrição em texto
+
+Este demo mostra a interface funcional com design minimalista usando Space Grotesk.`;
+
+                showResult('success', mockTranscription);
+                addToHistory(selectedFile.name, mockTranscription);
+            } catch (error) {
+                showResult('error', error.message);
+            }
+        }
+
+        async function transcribeUrl() {
+            const url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                alert('Digite uma URL.');
+                return;
+            }
+
+            const apiKey = settings.apiKey;
+            if (!apiKey) {
+                alert('Configure sua API Key nas configurações.');
+                switchTab('settings');
+                return;
+            }
+
+            showResult('processando');
+            
+            try {
+                await simulateTranscription(url);
+                
+                const mockTranscription = `Transcrição de exemplo da URL: ${url}
+
+Este é um resultado demonstrativo. Para transcrição real de URLs do YouTube ou outros serviços, você precisaria:
+
+1. Extrair o áudio da URL
+2. Enviar para o serviço de transcrição
+3. Receber e exibir o resultado
+
+A interface está pronta para receber a integração com a API de sua escolha.`;
+
+                showResult('success', mockTranscription);
+                addToHistory(url, mockTranscription);
+            } catch (error) {
+                showResult('error', error.message);
+            }
+        }
+
+        function simulateTranscription(source) {
+            return new Promise(resolve => setTimeout(resolve, 2000));
+        }
+
+        function showResult(status, text = '') {
+            const resultSection = document.getElementById('result-section');
+            const resultArea = document.getElementById('resultArea');
+            const statusBadge = document.getElementById('statusBadge');
+
+            resultSection.classList.remove('hidden');
+            statusBadge.className = 'status-badge ' + status;
+            statusBadge.classList.remove('hidden');
+
+            if (status === 'processando') {
+                statusBadge.innerHTML = '<span class="spinner"></span> Processando...';
+                resultArea.innerHTML = '<div class="result-placeholder">Processando seu arquivo...</div>';
+                // Scroll to result
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else if (status === 'success') {
+                statusBadge.innerHTML = '✓ Concluído';
+                resultArea.textContent = text;
+            } else if (status === 'error') {
+                statusBadge.innerHTML = '✕ Erro';
+                resultArea.textContent = text;
+            }
+        }
+
+        function copyResult() {
+            const text = document.getElementById('resultArea').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const copyBtn = document.getElementById('copyBtn');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✓ Copiado!';
+                setTimeout(() => copyBtn.innerHTML = originalText, 2000);
+            });
+        }
+
+        function addToHistory(source, transcription) {
+            const item = {
+                id: Date.now(),
+                source,
+                transcription,
+                date: new Date().toISOString()
+            };
+            history.unshift(item);
+            if (history.length > 10) history.pop();
+            localStorage.setItem('transcriptionHistory', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            if (history.length === 0) {
+                list.innerHTML = '<li class="result-placeholder">Nenhuma transcrição ainda</li>';
+                return;
+            }
+
+            list.innerHTML = history.map(item => `
+                <li class="history-item" onclick="showHistoryItem(${item.id})">
+                    <div class="history-date">${new Date(item.date).toLocaleString('pt-BR')}</div>
+                    <div class="history-preview">${item.source}</div>
+                </li>
+            `).join('');
+        }
+
+        function showHistoryItem(id) {
+            const item = history.find(h => h.id === id);
+            if (item) {
+                showResult('success', item.transcription);
+                switchTab('upload');
+            }
+        }
+
+        function saveSettings() {
+            settings = {
+                apiKey: document.getElementById('apiKeyInput').value.trim(),
+                model: document.getElementById('modelSelect').value,
+                language: document.getElementById('languageSelect').value
+            };
+            localStorage.setItem('transcriptionSettings', JSON.stringify(settings));
+            
+            const btn = document.getElementById('saveSettingsBtn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Salvo!';
+            setTimeout(() => btn.textContent = originalText, 2000);
+        }
+    </script>
+</body>
+</html>
