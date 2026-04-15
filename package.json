@@ -1,7 +1,7 @@
 {
-  "name": "trancribeji",
+  "name": "transcritor-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "electron-main.cjs",
   "scripts": {
@@ -13,8 +13,8 @@
     "build:exe": "npm run build && electron-builder build --windows"
   },
   "build": {
-    "appId": "com.trancribeji.app",
-    "productName": "TrancribeJI",
+    "appId": "com.transcritor.app",
+    "productName": "Transcritor",
     "directories": {
       "output": "dist-electron"
     },

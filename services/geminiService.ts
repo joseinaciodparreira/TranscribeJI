@@ -8,7 +8,8 @@ export const transcribeMedia = async (
   mimeType: string,
   fileName: string,
   apiKey: string = DEFAULT_API_KEY,
-  modelName: string = "gemini-3-flash-preview"
+  modelName: string = "gemini-1.5-flash",
+  language: string = "pt-BR"
 ): Promise<string> => {
   if (!apiKey) {
     throw new Error("A chave da API não está configurada.");
@@ -16,7 +17,7 @@ export const transcribeMedia = async (
 
   const ai = new GoogleGenAI({ apiKey });
   
-  const prompt = `Transcreva o seguinte conteúdo de ${mimeType.startsWith('audio') ? 'áudio' : 'vídeo'} com precisão. 
+  const prompt = `Transcreva o seguinte conteúdo de ${mimeType.startsWith('audio') ? 'áudio' : 'vídeo'} com precisão em ${language}. 
   Se possível, identifique diferentes falantes. 
   Mantenha o idioma original e a pontuação. 
   Se o arquivo não contiver fala, escreva "Nenhuma fala detectada".`;
@@ -48,7 +49,8 @@ export const transcribeMedia = async (
 export const transcribeFromLink = async (
   url: string,
   apiKey: string = DEFAULT_API_KEY,
-  modelName: string = "gemini-3-flash-preview"
+  modelName: string = "gemini-1.5-flash",
+  language: string = "pt-BR"
 ): Promise<string> => {
   if (!apiKey) {
     throw new Error("A chave da API não está configurada.");
@@ -57,7 +59,7 @@ export const transcribeFromLink = async (
   const ai = new GoogleGenAI({ apiKey });
   
   const prompt = `Por favor, analise o conteúdo nesta URL: ${url}. 
-  Se for um link de arquivo de vídeo ou áudio, transcreva seu conteúdo com precisão. 
+  Se for um link de arquivo de vídeo ou áudio, transcreva seu conteúdo com precisão em ${language}. 
   Se for um link do YouTube, resuma o conteúdo do vídeo em detalhes como uma transcrição.
   Forneça uma saída de texto limpa e legível.`;
 
