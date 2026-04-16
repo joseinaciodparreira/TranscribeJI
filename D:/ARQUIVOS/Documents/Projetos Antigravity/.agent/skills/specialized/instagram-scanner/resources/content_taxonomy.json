@@ -1,0 +1,146 @@
+{
+  "taxonomy_version": "1.0",
+  "content_categories": {
+    "educational": {
+      "description": "Conteúdo que ensina, educa ou informa",
+      "subtypes": [
+        "dica_rapida",
+        "tutorial_passo_a_passo",
+        "explicacao_conceito",
+        "mito_vs_verdade",
+        "erro_comum",
+        "como_fazer"
+      ],
+      "keywords": ["dica", "tutorial", "como", "passo", "guia", "ensino", "aprenda"]
+    },
+    "authority": {
+      "description": "Conteúdo que demonstra expertise e autoridade",
+      "subtypes": [
+        "bastidor",
+        "processo_de_trabalho",
+        "certificacao",
+        "premiacao",
+        "midia",
+        "parceria"
+      ],
+      "keywords": ["bastidor", "processo", "certificado", "premio", "entrevista", "feature"]
+    },
+    "social_proof": {
+      "description": "Conteúdo que mostra resultados e provas sociais",
+      "subtypes": [
+        "depoimento",
+        "antes_e_depois",
+        "case_sucesso",
+        "resultado_cliente",
+        "metrica",
+        "numero_alunos"
+      ],
+      "keywords": ["depoimento", "resultado", "transformacao", "antes", "depois", "cliente", "aluno"]
+    },
+    "offer": {
+      "description": "Conteúdo que promove oferta ou venda",
+      "subtypes": [
+        "lancamento",
+        "promocao",
+        "vagas_abertas",
+        "oferta_limitada",
+        "convite_evento",
+        "produto_novo"
+      ],
+      "keywords": ["inscricao", "vagas", "compra", "desconto", "promocao", "lancamento"]
+    },
+    "connection": {
+      "description": "Conteúdo que gera conexão emocional",
+      "subtypes": [
+        "historia_pessoal",
+        "valores",
+        "proposito",
+        "jornada",
+        "superacao",
+        "vida_real"
+      ],
+      "keywords": ["historia", "jornada", "proposito", "valores", "pessoal", "vida"]
+    },
+    "engagement": {
+      "description": "Conteúdo que busca engajamento",
+      "subtypes": [
+        "pergunta",
+        "enquete",
+        "desafio",
+        "concursos",
+        "interacao",
+        "pede_opiniao"
+      ],
+      "keywords": ["qual", "oque", "como", "concorda", "comente", "compartilhe"]
+    },
+    "retention": {
+      "description": "Conteúdo focado em reter atenção",
+      "subtypes": [
+        "curiosidade",
+        "fato_surpreendente",
+        "lista",
+        "top_5",
+        "compilacao",
+        "melhores_momentos"
+      ],
+      "keywords": ["curiosidade", "voce_sabia", "top", "lista", "melhores", "surpreendente"]
+    }
+  },
+  "hook_types": {
+    "question": {
+      "pattern": "Pergunta provocativa",
+      "examples": ["Você sabia que...", "Por que...", "Qual o erro..."]
+    },
+    "statement": {
+      "pattern": "Afirmação forte",
+      "examples": ["O segredo é...", "A verdade é...", "Ninguém te conta..."]
+    },
+    "number": {
+      "pattern": "Número específico",
+      "examples": ["3 passos...", "5 erros...", "7 dias..."]
+    },
+    "contrarian": {
+      "pattern": "Opinião contrária",
+      "examples": ["Esqueça tudo...", "Não faça...", "Pare de..."]
+    },
+    "story": {
+      "pattern": "Início de história",
+      "examples": ["Há 5 anos atrás...", "Quando eu estava...", "Tudo mudou quando..."]
+    },
+    "promise": {
+      "pattern": "Promessa de resultado",
+      "examples": ["Você vai aprender...", "Em 30 dias...", "Garantido..."]
+    }
+  },
+  "cta_types": {
+    "strong": {
+      "urgency": "alta",
+      "examples": ["clique agora", "compre já", "últimas vagas", "só hoje"]
+    },
+    "medium": {
+      "urgency": "média",
+      "examples": ["saiba mais", "confira", "acesse", "veja"]
+    },
+    "soft": {
+      "urgency": "baixa",
+      "examples": ["segue", "acompanhe", "curta", "comente"]
+    }
+  },
+  "niche_categories": [
+    "saude_bem_estar",
+    "fitness_emagrecimento",
+    "negocios_marketing",
+    "financas_investimentos",
+    "relacionamento",
+    "desenvolvimento_pessoal",
+    "carreira_profissao",
+    "gastronomia",
+    "viagens",
+    "moda_beleeza",
+    "tecnologia",
+    "educacao_ensino",
+    "imoveis",
+    "juridico",
+    "psicologia_terapia"
+  ]
+}

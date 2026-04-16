@@ -1,0 +1,24 @@
+# Exemplo de Entrada para Instagram Scanner
+
+## Scan Rápido
+python scripts/scan_profile.py --username tanidigital --mode fast
+
+## Scan Completo
+python scripts/scan_profile.py --username tanidigital --mode full
+
+## Normalizar dados
+python scripts/normalize_data.py --run-dir runs/2026-04-16_101500_tanidigital
+
+## Gerar scores
+python scripts/score.py --run-dir runs/2026-04-16_101500_tanidigital
+
+## Exportar relatórios
+python scripts/export_report.py --run-dir runs/2026-04-16_101500_tanidigital
+
+## Pipeline completo (one-liner)
+USERNAME="tanidigital" && \
+python scripts/scan_profile.py --username $USERNAME --mode full && \
+RUN_DIR=$(ls -td runs/*$USERNAME | head -1) && \
+python scripts/normalize_data.py --run-dir $RUN_DIR && \
+python scripts/score.py --run-dir $RUN_DIR && \
+python scripts/export_report.py --run-dir $RUN_DIR

@@ -1,0 +1,129 @@
+{
+  "scoring_version": "1.0",
+  "categories": {
+    "posicionamento": {
+      "weight": 1.5,
+      "factors": [
+        {"name": "has_niche", "points": 2},
+        {"name": "has_mechanism", "points": 2},
+        {"name": "is_positioned", "points": 3}
+      ]
+    },
+    "bio": {
+      "weight": 1.2,
+      "factors": [
+        {"name": "has_niche", "points": 2},
+        {"name": "has_offer", "points": 2},
+        {"name": "has_mechanism", "points": 2},
+        {"name": "has_cta", "points": 1.5},
+        {"name": "has_authority", "points": 1.5},
+        {"name": "has_proof", "points": 1}
+      ]
+    },
+    "oferta": {
+      "weight": 1.3,
+      "factors": [
+        {"name": "bio_has_offer", "points": 4},
+        {"name": "posts_offer_percentage", "points": 3},
+        {"name": "has_mechanism", "points": 2},
+        {"name": "cta_strength", "points": 1}
+      ]
+    },
+    "conversao": {
+      "weight": 1.3,
+      "factors": [
+        {"name": "has_external_url", "points": 2},
+        {"name": "has_cta", "points": 2},
+        {"name": "posts_cta_percentage", "points": 3},
+        {"name": "has_desire", "points": 1.5},
+        {"name": "has_pain", "points": 1.5}
+      ]
+    },
+    "autoridade": {
+      "weight": 1.0,
+      "factors": [
+        {"name": "is_verified", "points": 3},
+        {"name": "bio_has_authority", "points": 3},
+        {"name": "posts_authority_percentage", "points": 4}
+      ]
+    },
+    "prova": {
+      "weight": 1.0,
+      "factors": [
+        {"name": "bio_has_proof", "points": 4},
+        {"name": "posts_proof_percentage", "points": 6}
+      ]
+    },
+    "conteudo": {
+      "weight": 1.2,
+      "factors": [
+        {"name": "cta_frequency", "points": 2},
+        {"name": "authority_content", "points": 2},
+        {"name": "social_proof", "points": 2},
+        {"name": "offer_balance", "points": 1.5},
+        {"name": "hashtag_usage", "points": 1},
+        {"name": "location_signals", "points": 1},
+        {"name": "content_diversity", "points": 1.5}
+      ]
+    },
+    "retencao": {
+      "weight": 0.8,
+      "factors": [
+        {"name": "hook_percentage", "points": 5},
+        {"name": "caption_length_quality", "points": 3}
+      ]
+    },
+    "estetica": {
+      "weight": 0.7,
+      "factors": [
+        {"name": "content_consistency", "points": 3},
+        {"name": "base_score", "points": 5}
+      ]
+    },
+    "consistencia": {
+      "weight": 1.0,
+      "factors": [
+        {"name": "post_count", "points": 4},
+        {"name": "cta_consistency", "points": 3},
+        {"name": "hashtag_consistency", "points": 3}
+      ]
+    }
+  },
+  "thresholds": {
+    "excellent": 8.0,
+    "good": 6.0,
+    "fair": 4.0,
+    "critical": 0.0
+  },
+  "keywords": {
+    "offer": [
+      "consulta", "sessão", "pacote", "programa", "curso", "mentoria",
+      "workshop", "treinamento", "ebook", "guia", "material",
+      "desconto", "promoção", "oferta", "lançamento", "vagas"
+    ],
+    "authority": [
+      "especialista", "expert", "autoridade", "referência", "pioneiro",
+      "fundador", "diretor", "ceo", "professor", "doutor", "phd"
+    ],
+    "social_proof": [
+      "depoimento", "testemunho", "resultado", "case", "antes e depois",
+      "transformação", "aluno", "cliente", "milhares", "avaliações"
+    ],
+    "pain": [
+      "problema", "dificuldade", "desafio", "dor", "sofrimento",
+      "frustração", "ansiedade", "estresse", "medo", "insegurança"
+    ],
+    "desire": [
+      "conquista", "alcance", "atingir", "realizar", "transformar",
+      "liberdade", "sucesso", "prosperidade", "abundância", "felicidade"
+    ],
+    "cta_strong": [
+      "clique agora", "compre agora", "inscreva-se já", "garanta sua vaga",
+      "últimas vagas", "só hoje", "chame no whatsapp", "agende agora"
+    ],
+    "cta_weak": [
+      "saiba mais", "confira", "veja", "conheça", "descubra",
+      "leia mais", "acompanhe", "segue"
+    ]
+  }
+}
