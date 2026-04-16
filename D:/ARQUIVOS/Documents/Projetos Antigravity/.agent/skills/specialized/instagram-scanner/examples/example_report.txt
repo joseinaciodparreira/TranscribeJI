@@ -1,0 +1,175 @@
+======================================================================
+EXEMPLO DE RELATÓRIO - ANÁLISE DE INSTAGRAM
+======================================================================
+
+Data: 16/04/2026 14:30
+Perfil: @tanidigital
+
+======================================================================
+RESUMO EXECUTIVO
+======================================================================
+
+Score Geral: 6.8/10
+
+Classificação: BOM - Possui fundamentos mas precisa de ajustes
+
+----------------------------------------------------------------------
+PRINCIPAIS GARGALOS
+----------------------------------------------------------------------
+1. PROVA: 3.5/10 - 🔴 CRÍTICO
+2. MECANISMO: 4.2/10 - 🟡 ATENÇÃO  
+3. CTA: 5.0/10 - 🟢 OK
+
+----------------------------------------------------------------------
+GANHOS RÁPIDOS (Quick Wins)
+----------------------------------------------------------------------
+1. Adicionar prova social na bio (ex: +500 alunos atendidos)
+2. Criar método próprio nomeado (ex: Método Emagrecer 360°)
+3. Fortalecer CTA da bio com urgência
+
+======================================================================
+SCORES DETALHADOS POR CATEGORIA
+======================================================================
+
+POSICIONAMENTO       [███████░░░] 7.2/10
+BIO                  [███████░░░] 6.8/10
+OFERTA               [███████░░░] 7.0/10
+CONVERSÃO            [██████░░░░] 6.2/10
+AUTORIDADE           [████████░░] 8.0/10
+PROVA SOCIAL         [███░░░░░░░] 3.5/10
+CONTEÚDO             [███████░░░] 6.5/10
+RETENÇÃO             [██████░░░░] 6.0/10
+ESTÉTICA             [███████░░░] 7.5/10
+CONSISTÊNCIA         [████████░░] 8.0/10
+
+----------------------------------------------------------------------
+JUSTIFICATIVAS
+----------------------------------------------------------------------
+
+Bio:
+  ✓ Nicho claro identificado (emagrecimento/saúde)
+  ✓ Oferta identificada (programa de emagrecimento)
+  ✗ Sem mecanismo diferenciado
+  ~ CTA presente mas fraco ("saiba mais")
+  ✓ Marcadores de autoridade presentes
+  ✗ Sem prova social na bio
+
+Conteúdo:
+  ~ CTAs presentes mas pouco frequentes (18%)
+  ✓ Forte conteúdo de autoridade (45%)
+  ✗ Pouca prova social nos posts (8%)
+  ✓ Equilíbrio de posts de oferta (22%)
+  ✓ Bom uso de hashtags
+  ✗ Sem sinais de localização
+
+======================================================================
+PLANO DE CORREÇÃO - 30 DIAS
+======================================================================
+
+SEMANA 1 - FUNDAÇÃO E POSICIONAMENTO
+----------------------------------------------------------------------
+Dia 1-2: Definir e comunicar nicho específico
+  → Revisar público-alvo principal
+  → Identificar especialidade única
+  → Atualizar bio com foco no nicho
+
+Dia 3-4: Criar método/mecanismo próprio
+  → Documentar processo único de trabalho
+  → Nomear o método (ex: Método Emagrecer 360°)
+  → Incluir na bio e materiais
+
+Dia 5-7: Implementar CTA forte
+  → Definir ação principal desejada
+  → Criar link de destino otimizado
+  → Adicionar CTA claro na bio ("Agende sua consulta")
+
+SEMANA 2 - CONTEÚDO E AUTORIDADE
+----------------------------------------------------------------------
+Dia 8-10: Aumentar CTAs nos posts
+  → Revisar últimos 12 posts
+  → Adicionar CTA em 30% dos posts
+  → Variar tipos de CTA (link, DM, comentário)
+
+Dia 11-14: Fortalecer conteúdo de autoridade
+  → Criar 3 posts educativos profundos
+  → Compartilhar cases/resultados
+  → Mostrar bastidor do trabalho
+
+SEMANA 3 - PROVA SOCIAL E CONVERSÃO
+----------------------------------------------------------------------
+Dia 15-17: Adicionar prova social na bio
+  → Coletar 3-5 depoimentos fortes
+  → Quantificar resultados (ex: +500 alunos)
+  → Incluir números na bio
+
+Dia 18-21: Aumentar prova social nos posts
+  → Postar 2-3 antes/depois
+  → Compartilhar testimonials em vídeo
+  → Mostrar métricas de clientes
+
+SEMANA 4 - CONSISTÊNCIA E OTIMIZAÇÃO
+----------------------------------------------------------------------
+Dia 22-25: Auditoria de consistência visual
+  → Revisar padrão de cores e fontes
+  → Criar templates para posts
+  → Definir estilo de capas
+
+Dia 26-28: Otimizar legenda e ganchos
+  → Analisar hooks dos top posts
+  → Testar novos formatos de abertura
+  → Melhorar primeiras linhas
+
+Dia 29-30: Reavaliação completa
+  → Rodar scanner novamente
+  → Comparar scores antes/depois
+  → Planejar próximo ciclo
+
+----------------------------------------------------------------------
+MÉTRICAS DE SUCESSO ESPERADAS
+----------------------------------------------------------------------
+Score atual médio: 6.7/10
+Score alvo (30 dias): 8.2/10
+
+Metas específicas:
+  • Bio score: 6.8 → 8.5 (+1.7)
+  • Conteúdo score: 6.5 → 8.0 (+1.5)
+  • Conversão score: 6.2 → 8.5 (+2.3)
+  • Posts com CTA: 18% → 35%
+  • Posts com prova social: 8% → 25%
+
+======================================================================
+DIAGNÓSTICO DE CONVERSÃO
+======================================================================
+
+Score de Conversão: 6.2/10
+
+  [✓] Perfil tem link externo
+  [~] Bio tem CTA claro (fraco)
+  [✗] CTA é forte
+  [✓] Bio comunica desejo
+  [~] Bio comunica dor
+  [✓] Posts têm CTA
+
+Recomendações:
+1. Trocar "Saiba mais" por "Agende sua avaliação grátis"
+2. Adicionar urgência: "Vagas limitadas este mês"
+3. Criar sequência de stories com CTA progressivo
+
+======================================================================
+RECOMENDAÇÕES FINAIS
+======================================================================
+
+~ Perfil com boa base
+
+→ Foco: Resolver gargalos específicos identificados
+→ Prioridade: Bio e prova social
+→ Ação imediata: Adicionar números de resultado na bio
+
+Próximos passos:
+1. Implementar mudanças da Semana 1 ainda esta semana
+2. Agendar reavaliação para 30 dias
+3. Considerar tráfego pago após melhorias de conversão
+
+======================================================================
+FIM DO RELATÓRIO
+======================================================================

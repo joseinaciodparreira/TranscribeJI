@@ -1,0 +1,130 @@
+{
+  "scoring_rules": {
+    "POSICIONAMENTO": {
+      "description": "Clareza de nicho e público-alvo na comunicação",
+      "weight": 1.5,
+      "criteria": [
+        {"check": "bio_mentions_niche", "points": 2.0, "description": "Bio menciona nicho claramente"},
+        {"check": "bio_mentions_audience", "points": 2.0, "description": "Bio identifica público-alvo"},
+        {"check": "consistent_visual_theme", "points": 2.0, "description": "Feed tem tema visual consistente"},
+        {"check": "content_focus", "points": 2.0, "description": "Conteúdo focado em temas do nicho"},
+        {"check": "differentiation", "points": 2.0, "description": "Comunicação diferencia da concorrência"}
+      ],
+      "max_score": 10.0
+    },
+    "BIO": {
+      "description": "Qualidade e efetividade da bio do Instagram",
+      "weight": 1.2,
+      "criteria": [
+        {"check": "has_clear_value_proposition", "points": 2.5, "description": "Proposta de valor clara"},
+        {"check": "has_target_audience_mention", "points": 2.0, "description": "Menciona quem atende"},
+        {"check": "has_authority_marker", "points": 2.0, "description": "Tem marcador de autoridade"},
+        {"check": "has_cta", "points": 2.0, "description": "Tem chamada para ação"},
+        {"check": "has_external_link", "points": 1.5, "description": "Tem link externo configurado"}
+      ],
+      "max_score": 10.0
+    },
+    "OFERTA": {
+      "description": "Clareza e atratividade da oferta",
+      "weight": 1.5,
+      "criteria": [
+        {"check": "offer_is_explicit", "points": 3.0, "description": "Oferta é explícita e compreensível"},
+        {"check": "has_mechanism", "points": 2.5, "description": "Tem mecanismo único explicado"},
+        {"check": "has_promise", "points": 2.5, "description": "Tem promessa clara de resultado"},
+        {"check": "offer_visible_in_feed", "points": 2.0, "description": "Oferta aparece no feed regularmente"}
+      ],
+      "max_score": 10.0
+    },
+    "CONVERSAO": {
+      "description": "Efetividade dos caminhos de conversão",
+      "weight": 1.3,
+      "criteria": [
+        {"check": "bio_has_strong_cta", "points": 2.5, "description": "CTA na bio é forte e claro"},
+        {"check": "link_in_bio_works", "points": 2.5, "description": "Link da bio funciona e é relevante"},
+        {"check": "posts_have_cta", "points": 2.5, "description": "Posts têm chamadas para ação"},
+        {"check": "clear_conversion_path", "points": 2.5, "description": "Caminho de conversão é claro"}
+      ],
+      "max_score": 10.0
+    },
+    "AUTORIDADE": {
+      "description": "Demonstração de expertise e repertório",
+      "weight": 1.2,
+      "criteria": [
+        {"check": "shows_expertise_content", "points": 2.5, "description": "Conteúdo demonstra expertise"},
+        {"check": "has_credentials_displayed", "points": 2.0, "description": "Credenciais são exibidas"},
+        {"check": "educational_content_ratio", "points": 2.5, "description": "Boa proporção de conteúdo educativo"},
+        {"check": "industry_insights", "points": 2.0, "description": "Compartilha insights do setor"},
+        {"check": "thought_leadership", "points": 1.0, "description": "Posicionamento como líder de pensamento"}
+      ],
+      "max_score": 10.0
+    },
+    "PROVA": {
+      "description": "Presença de prova social e resultados",
+      "weight": 1.3,
+      "criteria": [
+        {"check": "has_testimonials", "points": 2.5, "description": "Tem depoimentos de clientes"},
+        {"check": "has_before_after", "points": 2.5, "description": "Mostra antes e depois"},
+        {"check": "has_results_displayed", "points": 2.5, "description": "Resultados são exibidos"},
+        {"check": "social_proof_visible", "points": 2.5, "description": "Prova social visível no feed"}
+      ],
+      "max_score": 10.0
+    },
+    "CONTEUDO": {
+      "description": "Qualidade e variedade do conteúdo",
+      "weight": 1.0,
+      "criteria": [
+        {"check": "content_variety", "points": 2.0, "description": "Variedade de formatos e temas"},
+        {"check": "content_quality", "points": 3.0, "description": "Qualidade geral do conteúdo"},
+        {"check": "posting_consistency", "points": 2.5, "description": "Consistência nas postagens"},
+        {"check": "value_to_audience", "points": 2.5, "description": "Conteúdo gera valor para audiência"}
+      ],
+      "max_score": 10.0
+    },
+    "RETENCAO": {
+      "description": "Capacidade de reter atenção",
+      "weight": 1.1,
+      "criteria": [
+        {"check": "strong_hooks", "points": 2.5, "description": "Ganchos iniciais fortes"},
+        {"check": "caption_engagement", "points": 2.5, "description": "Legendas engajantes"},
+        {"check": "visual_appeal", "points": 2.5, "description": "Apelo visual das imagens/vídeos"},
+        {"check": "storytelling_present", "points": 2.5, "description": "Uso de storytelling"}
+      ],
+      "max_score": 10.0
+    },
+    "ESTETICA": {
+      "description": "Qualidade e consistência visual",
+      "weight": 1.0,
+      "criteria": [
+        {"check": "visual_consistency", "points": 3.0, "description": "Consistência visual do feed"},
+        {"check": "image_quality", "points": 2.5, "description": "Qualidade das imagens"},
+        {"check": "brand_colors_present", "points": 2.0, "description": "Cores da marca presentes"},
+        {"check": "professional_appearance", "points": 2.5, "description": "Aparência profissional geral"}
+      ],
+      "max_score": 10.0
+    },
+    "CONSISTENCIA": {
+      "description": "Regularidade e frequência de postagem",
+      "weight": 1.2,
+      "criteria": [
+        {"check": "posting_frequency", "points": 3.0, "description": "Frequência adequada de posts"},
+        {"check": "schedule_regularity", "points": 3.0, "description": "Regularidade no cronograma"},
+        {"check": "content_pillars_balance", "points": 2.0, "description": "Equilíbrio entre pilares de conteúdo"},
+        {"check": "no_long_gaps", "points": 2.0, "description": "Sem lacunas longas entre posts"}
+      ],
+      "max_score": 10.0
+    }
+  },
+  "global_settings": {
+    "min_posts_required": 6,
+    "passing_score": 6.0,
+    "excellent_score": 8.0,
+    "score_rounding": 1
+  },
+  "interpretation": {
+    "9-10": "Excelente - Manter estratégia e otimizar detalhes",
+    "7-8": "Bom - Pequenos ajustes necessários",
+    "5-6": "Regular - Melhorias significativas necessárias",
+    "3-4": "Fraco - Revisão estratégica recomendada",
+    "0-2": "Crítico - Reconstrução necessária"
+  }
+}
