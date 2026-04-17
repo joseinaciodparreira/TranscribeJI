@@ -125,7 +125,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 
 ## Objetivo: Valor rápido com mínimo de complexidade
 
-**Número de Skills: 8**
+**Número de Skills: 8** (incluindo Engenharia Social Básica)
 
 | # | Skill | Função | Impacto |
 |---|-------|--------|---------|
@@ -134,13 +134,13 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 | 3 | Organizador de Base Mínima | Organiza | Alto |
 | 4 | Interpretador de Cenário | Interpreta | Alto |
 | 5 | Minerador de Oportunidades | Interpreta | Alto |
-| 6 | Definidor de Posicionamento | Decide | Alto |
-| 7 | Priorizador de Ações | Decide | Alto |
-| 8 | Gerador de Plano Simplificado | Executa | Alto |
+| 6 | Analista de Engenharia Social Básica | Interpreta | Alto |
+| 7 | Definidor de Posicionamento | Decide | Alto |
+| 8 | Priorizador de Ações + Plano Simplificado | Decide/Executa | Alto |
 
 ### Por que estas 8 skills?
 
-- **Cobrem todo o fluxo**: Da coleta à execução
+- **Cobrem todo o fluxo**: Da coleta à execução, incluindo gatilhos mentais e influência
 - **Eliminam redundância**: Cada uma tem função única
 - **Geram valor em < 2 horas**: Processo rápido e direto
 - **Servem 80% dos casos**: Negócios locais, especialistas, pequenas empresas
@@ -150,6 +150,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 ✅ Entende o negócio em profundidade básica  
 ✅ Escanea presença digital crítica  
 ✅ Identifica 3-5 oportunidades claras  
+✅ Mapeia gatilhos mentais e alavancas de influência aplicáveis  
 ✅ Define posicionamento essencial  
 ✅ Entrega plano de ação com 5-7 passos prioritários  
 
@@ -159,6 +160,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 ❌ Pesquisa avançada de concorrência  
 ❌ Segmentação complexa de público  
 ❌ Automação de conteúdo  
+❌ Engenharia social avançada (campanhas coordenadas, manipulação de massa)  
 
 ---
 
@@ -178,7 +180,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 | 12 | Avaliador de Conteúdo Instagram | Interpreta | Médio |
 | 13 | Mapeador de Jornada do Cliente | Interpreta | Alto |
 | 14 | Validador de Oferta | Interpreta | Alto |
-| 15 | Estruturador de Mensagem | Decide | Alto |
+| 15 | Estruturador de Mensagem + Engenharia Social Aplicada | Decide | Alto |
 
 ### Por que expandir para 15 skills?
 
@@ -186,6 +188,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 - **Cobre mais cenários**: Atende consultorias, clínicas, marcas pessoais
 - **Aumenta precisão**: Validação cruzada entre skills
 - **Permite personalização**: Adaptação a diferentes maturidades
+- **Aplica engenharia social estratégica**: Gatilhos mentais integrados à mensagem
 
 ### O que esta stack resolve além da mínima:
 
@@ -195,15 +198,16 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 ✅ Audit de conteúdo do Instagram  
 ✅ Mapeamento de jornada de compra  
 ✅ Validação de clareza da oferta  
-✅ Estruturação de mensagem-chave  
+✅ Estruturação de mensagem-chave com gatilhos mentais  
+✅ Aplicação de princípios de influência (Cialdini, Fogg, hooks comportamentais)  
 
 ---
 
 # 5. STACK AVANÇADA
 
-## Objetivo: Inteligência contínua e especialização
+## Objetivo: Inteligência contínua, especialização e blindagem estratégica
 
-**Número de Skills: 22**
+**Número de Skills: 26** (incluindo Engenharia Social Profunda, Risco Reputacional, Tradutor Operacional e Detector de Pivotagem)
 
 ### Adições à Stack Profissional:
 
@@ -221,17 +225,43 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 | 25 | Monitor de Evolução de Mercado | Interpreta | Médio |
 | 26 | Gerador de Roadmap Trimestral | Executa | Alto |
 | 27 | Auditor de Coerência Geral | Interpreta | Alto |
+| 28 | Estrategista de Engenharia Social Profunda | Decide/Executa | Alto |
+| 29 | **Auditor de Risco Reputacional** | Interpreta/Decide | **CRÍTICO** |
+| 30 | **Tradutor Operacional de Estratégia** | Decide/Executa | **CRÍTICO** |
+| 31 | **Detector de Estagnação & Pivotagem** | Interpreta/Decide | **ALTO** |
+| 32 | **Orquestrador de Inteligência Contínua** | Organiza/Decide | **CRÍTICO** |
 
-### Por que expandir para 22 skills?
+### Por que expandir para 26 skills?
 
 - **Inteligência contínua**: Monitoramento constante do mercado
 - **Profundidade analítica**: Camadas adicionais de interpretação
 - **Especialização**: Suporte a negócios mais complexos
 - **Escala futura**: Preparação para crescimento
+- **Engenharia social avançada**: Campanhas coordenadas, manipulação ética de comportamento, prova social orquestrada
+- **BLINDAGEM ESTRATÉGICA**: Prevenção de riscos reputacionais e legais antes da execução
+- **PONTE DE EXECUÇÃO**: Tradução de estratégia abstrata em tarefas operacionais claras
+- **ADAPTABILIDADE**: Detecção precoce de estagnação e gatilhos para pivotagem
+- **ORQUESTRAÇÃO CONTÍNUA**: Sistema auto-alimentado de melhoria e atualização
 
 ### O que esta stack resolve além da profissional:
 
 ✅ Detecção de tendências emergentes no nicho  
+✅ Análise profunda de reviews e sentimentos do público  
+✅ Mapeamento de intenção de busca em múltiplas camadas  
+✅ Segmentação avançada de personas por comportamento  
+✅ Comparação competitiva com identificação de brechas  
+✅ Detecção de gargalos ocultos de conversão  
+✅ Otimização de funil com testes estruturados  
+✅ Planejamento de conteúdo com calendário estratégico  
+✅ Calibração fina de canais por performance  
+✅ Monitoramento de evolução de mercado em tempo real  
+✅ Roadmap trimestral com marcos claros  
+✅ Auditoria de coerência entre todos os elementos da marca  
+✅ **Engenharia social profunda**: loops de influência, autoridade construída, validação em cascata  
+✅ **AUDITORIA DE RISCO**: Cancelamento, polêmicas, conformidade legal, sensibilidade cultural  
+✅ **TRADUÇÃO OPERACIONAL**: Checklist executivo, delegação clara, prazos realistas  
+✅ **DETECTOR DE PIVOTAGEM**: Sinais de saturação, métricas de alerta, plano B acionável  
+✅ **ORQUESTRAÇÃO CONTÍNUA**: Ciclo automático de coleta-interpretação-decisão-ação  
 ✅ Análise sistemática de reviews e reputação  
 ✅ Pesquisa avançada de intenção de busca  
 ✅ Segmentação detalhada de personas  
@@ -243,6 +273,7 @@ COLETA → ORGANIZA → INTERPRETA → DECIDE → EXECUTA → (reinicio do ciclo
 ✅ Monitoramento contínuo de evolução de mercado  
 ✅ Roadmap estratégico de 90 dias  
 ✅ Auditoria completa de coerência de marca  
+✅ **Engenharia social profunda**: Orquestração de prova social, gatilhos de escassez, autoridade construída, influência em massa ética  
 
 ---
 
@@ -590,7 +621,75 @@ Identificar oportunidades concretas de melhoria e crescimento baseadas no cenár
 
 ---
 
-### SKILL 06: Definidor de Posicionamento
+### SKILL 06: Analista de Engenharia Social Básica
+
+**Nível de Prioridade:** NUCLEAR  
+**Tipo de Função:** INTERPRETA  
+
+**Missão da Skill:**  
+Mapear gatilhos mentais, alavancas de influência e princípios de persuasão aplicáveis ao negócio com base no público e cenário identificados.
+
+**O que ela analisa:**
+- Perfil psicológico do público-alvo
+- Dores e desejos emocionais
+- Objeções conscientes e inconscientes
+- Comportamentos observados nos canais
+- Linguagem utilizada pelo público
+- Contexto de decisão de compra
+
+**Input Necessário:**
+- Output da Triagem Rápida de Negócio
+- Output do Scan Digital Essencial
+- Output do Interpretador de Cenário (se disponível)
+
+**Processo Interno:**
+1. Identificar os 3-5 gatilhos mentais mais relevantes para o nicho (urgência, escassez, autoridade, prova social, reciprocidade, etc.)
+2. Mapear alavancas de influência específicas (Cialdini, Fogg Behavior Model)
+3. Detectar padrões de comportamento observáveis nos canais
+4. Identificar oportunidades de prova social
+5. Sugerir elementos de persuasão ética aplicáveis imediatamente
+
+**Output Gerado:**
+```json
+{
+  "gatilhos_mentais_prioritarios": [
+    {
+      "gatilho": "",
+      "justificativa": "",
+      "aplicacao_sugerida": ""
+    }
+  ],
+  "alavancas_influencia": [],
+  "oportunidades_prova_social": [],
+  "padroes_comportamentais": [],
+  "recomendacoes_persuasao_etica": []
+}
+```
+
+**Como ela se conecta com as outras:**
+- Alimenta: Definidor de Posicionamento, Estruturador de Mensagem
+- Recebe de: Triagem Rápida, Scan Digital, Interpretador de Cenário
+
+**Quando usar:**
+- ✅ Após entender o público e o cenário
+- ✅ Antes de definir posicionamento e mensagem
+- ✅ Em qualquer negócio que precise influenciar decisões
+
+**Quando NÃO usar:**
+- ❌ Se não há clareza sobre quem é o público
+- ❌ Em contextos onde manipulação antiética seria necessária (a skill foca em persuasão ética)
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- Módulo: PÚBLICO E MERCADO (subseção: Psicologia e Influência)
+- Módulo: POSICIONAMENTO (subseção: Gatilhos e Persuasão)
+- Arquivo: `base_engenharia_social_basica.json`
+
+**Impacto no Negócio:** ALTO  
+*Transforma compreensão do público em alavancas práticas de influência e conversão.*
+
+---
+
+### SKILL 07: Definidor de Posicionamento
 
 **Nível de Prioridade:** NUCLEAR  
 **Tipo de Função:** DECIDE  
@@ -1218,13 +1317,13 @@ Avaliar se a oferta atual é clara, atraente e alinhada com as necessidades do p
 
 ---
 
-### SKILL 15: Estruturador de Mensagem
+### SKILL 15: Estruturador de Mensagem + Engenharia Social Aplicada
 
 **Nível de Prioridade:** IMPORTANTE  
 **Tipo de Função:** DECIDE  
 
 **Missão da Skill:**  
-Criar a estrutura de messaging principal que será usada em todos os canais de comunicação.
+Criar a estrutura de messaging principal que será usada em todos os canais de comunicação, integrando gatilhos mentais e princípios de influência identificados pela engenharia social.
 
 **O que ela analisa:**
 - Posicionamento definido
@@ -1232,19 +1331,24 @@ Criar a estrutura de messaging principal que será usada em todos os canais de c
 - Diferenciais da oferta
 - Linguagem do público
 - Tom de voz da marca
+- Gatilhos mentais prioritários (da Skill 06)
+- Alavancas de influência aplicáveis
 
 **Input Necessário:**
 - Output do Definidor de Posicionamento
 - Output do Pesquisador de Público Profundo
 - Output do Validador de Oferta
+- Output do Analista de Engenharia Social Básica
 
 **Processo Interno:**
 1. Extrair elementos-chave do posicionamento
 2. Conectar com linguagem real do público
-3. Criar headline principal (promessa clara)
-4. Desenvolver sub-headlines de apoio
-5. Estruturar pilares de mensagem
-6. Definir CTAs principais e secundários
+3. Integrar gatilhos mentais prioritários na mensagem
+4. Criar headline principal (promessa clara + gatilho)
+5. Desenvolver sub-headlines de apoio com alavancas de influência
+6. Estruturar pilares de mensagem persuasiva
+7. Definir CTAs principais e secundários otimizados para conversão
+8. Aplicar princípios de Cialdini (prova social, autoridade, escassez, etc.)
 
 **Output Gerado:**
 ```json
@@ -1255,34 +1359,44 @@ Criar a estrutura de messaging principal que será usada em todos os canais de c
     "promessa_central": "",
     "pilares_mensagem": [],
     "ctas_principais": [],
-    "ctas_secundarios": []
+    "ctas_secundarios": [],
+    "gatilhos_integrados": []
   },
   "variacao_por_canal": {},
   "palavras_usar": [],
   "palavras_evitar": [],
-  "tom_voz_detalhado": ""
+  "tom_voz_detalhado": "",
+  "elementos_persuasao": {
+    "prova_social": [],
+    "autoridade": [],
+    "urgencia_escassez": [],
+    "reciprocidade": []
+  }
 }
 ```
 
 **Como ela se conecta com as outras:**
 - Alimenta: Gerador de Plano Simplificado, Planejador de Conteúdo Estratégico
-- Recebe de: Definidor de Posicionamento, Pesquisador de Público, Validador de Oferta
+- Recebe de: Definidor de Posicionamento, Pesquisador de Público, Validador de Oferta, Analista de Engenharia Social
 
 **Quando usar:**
 - ✅ Posicionamento recém-definido
 - ✅ Inconsistência de mensagem entre canais
 - ✅ Criação de novos materiais de comunicação
+- ✅ Otimização de páginas de vendas/landing pages
 
 **Quando NÃO usar:**
 - ❌ Messaging já definido e testado com sucesso
 - ❌ Se posicionamento ainda não está claro
+- ❌ Se não há dados de engenharia social disponíveis
 
 **Qual base, arquivo ou módulo ela alimenta:**
 - Módulo: POSICIONAMENTO
+- Módulo: PÚBLICO E MERCADO (subseção: Psicologia e Influência)
 - Arquivo: `base_messaging.json`
 
 **Impacto no Negócio:** ALTO  
-*Mensagem clara e consistente multiplica eficácia de toda comunicação.*
+*Mensagem clara, consistente e psicologicamente otimizada multiplica eficácia de toda comunicação e conversão.*
 
 ---
 
@@ -2128,9 +2242,558 @@ Avaliar a coerência geral entre todos os elementos do negócio (posicionamento,
 
 ---
 
-# 7. ESTRUTURA DA BASE DE INFORMAÇÕES
+### SKILL 28: Estrategista de Engenharia Social Profunda
 
-## 7.1 Módulos Nucleares (Essenciais)
+**Nível de Prioridade:** OPCIONAL  
+**Tipo de Função:** DECIDE/EXECUTA  
+
+**Missão da Skill:**  
+Orquestrar campanhas coordenadas de influência, prova social construída e manipulação ética de comportamento em escala, aplicando princípios avançados de engenharia social para acelerar autoridade e conversão.
+
+**O que ela analisa:**
+- Base completa de engenharia social básica (Skill 06)
+- Histórico de interações e respostas do público
+- Padrões de comportamento em massa observáveis
+- Redes de influência do nicho
+- Timing e contexto cultural
+- Elementos de prova social disponíveis e faltantes
+
+**Input Necessário:**
+- Output do Analista de Engenharia Social Básica
+- Output do Pesquisador de Público Profundo
+- Output do Minerador de Concorrência
+- Output do Monitor de Evolução de Mercado
+- Dados de performance de conteúdos anteriores
+
+**Processo Interno:**
+1. Mapear rede de influenciadores e formadores de opinião do nicho
+2. Identificar oportunidades de prova social orquestrada (depoimentos, cases, endorsements)
+3. Desenhar sequência de gatilhos mentais ao longo do tempo (campanha coordenada)
+4. Aplicar modelo Fogg (Motivação x Habilidade x Trigger) para comportamentos-alvo
+5. Criar estratégia de autoridade construída (parcerias, appearances, associações)
+6. Planejar escassez e urgência éticas com timing preciso
+7. Desenhar loops de reciprocidade (conteúdo gratuito → valor percebido → conversão)
+8. Estabelecer sistema de validação social em cascata
+9. Definir métricas de sucesso para cada elemento de influência
+
+**Output Gerado:**
+```json
+{
+  "estrategia_engenharia_social": {
+    "campanha_coordenada": {
+      "objetivo_comportamental": "",
+      "sequencia_gatilhos": [],
+      "timeline": "",
+      "canais_prioritarios": []
+    },
+    "prova_social_orquestrada": {
+      "depoimentos_planejados": [],
+      "cases_a_produzir": [],
+      "endorsements_possiveis": [],
+      "metricas_validacao": []
+    },
+    "autoridade_construida": {
+      "parcerias_estrategicas": [],
+      "appearances_sugeridas": [],
+      "associacoes_relevantes": [],
+      "credenciais_a_destacar": []
+    },
+    "escassez_urgencia": {
+      "oportunidades_legitimas": [],
+      "timing_aplicacao": [],
+      "limites_reais": []
+    },
+    "loops_reciprocidade": {
+      "conteudo_gratuito": [],
+      "valor_entregue": "",
+      "call_to_action_reciproco": ""
+    },
+    "validacao_social_cascata": {
+      "primeiros_adotantes": [],
+      "multiplicadores": [],
+      "prova_massa_critica": ""
+    }
+  },
+  "metricas_sucesso": {},
+  "riscos_eticos_alertas": [],
+  "plano_execucao_90_dias": []
+}
+```
+
+**Como ela se conecta com as outras:**
+- Alimenta: Planejador de Conteúdo Estratégico, Gerador de Roadmap Trimestral
+- Recebe de: Analista de Engenharia Social Básica, Pesquisador de Público, Monitor de Mercado
+
+**Quando usar:**
+- ✅ Negócios estabelecidos buscando escala rápida
+- ✅ Lançamentos de produtos/serviços de alto ticket
+- ✅ Reposicionamento de marca necessário
+- ✅ Competição acirrada onde diferenciação é crítica
+
+**Quando NÃO usar:**
+- ❌ Negócios em fase inicial (< 6 meses de operação)
+- ❌ Quando não há produto/serviço validado
+- ❌ Se a equipe não consegue executar com consistência
+- ❌ Em contextos onde manipulação antiética seria necessária (foco em influência ética)
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- Módulo: PÚBLICO E MERCADO (subseção: Engenharia Social Avançada)
+- Módulo: POSICIONAMENTO (subseção: Autoridade e Prova Social)
+- Módulo: PLANO DE AÇÃO (subseção: Campanhas Coordenadas)
+- Arquivo: `base_engenharia_social_profunda.json`
+
+**Impacto no Negócio:** ALTO  
+*Engenharia social bem executada pode acelerar construção de autoridade em 6-12 meses para 6-12 semanas, com aumento exponencial de conversão.*
+
+---
+
+### SKILL 29: Auditor de Risco Reputacional
+
+**Nível de Prioridade:** NUCLEAR  
+**Tipo de Função:** INTERPRETA/DECIDE  
+
+**Missão da Skill:**  
+Analisar estratégias, mensagens e ações planejadas quanto ao risco de dano reputacional, cancelamento, polêmicas desnecessárias, conformidade legal e sensibilidade cultural ANTES da execução, atuando como um "freio de segurança" estratégico.
+
+**O que ela analisa:**
+- Mensagens e headlines planejadas
+- Campanhas de marketing propostas
+- Posicionamentos públicos da marca
+- Respostas a críticas ou crises
+- Conformidade com regulamentações do nicho (saúde, direito, finanças, etc.)
+- Sensibilidade cultural e contextual
+- Histórico de polêmicas do nicho
+- Tom de voz e linguagem utilizada
+
+**Input Necessário:**
+- Output do Estruturador de Mensagem + Engenharia Social Aplicada
+- Output do Planejador de Conteúdo Estratégico
+- Output do Estrategista de Engenharia Social Profunda
+- Regulamentações específicas do nicho (se aplicável)
+- Base de casos de cancelamento do setor
+
+**Processo Interno:**
+1. Escanear todas as mensagens e campanhas planejadas
+2. Identificar palavras/frases de alto risco (polêmicas, sensíveis, ambíguas)
+3. Avaliar conformidade legal (ANVISA, CFP, CVM, PROCON, etc.)
+4. Analisar sensibilidade cultural (gênero, raça, religião, orientação, etc.)
+5. Verificar histórico de polêmicas similares no nicho
+6. Classificar risco em níveis: BAIXO, MÉDIO, ALTO, CRÍTICO
+7. Sugerir alternativas de mensagem com menor risco
+8. Criar plano de contingência para cenários de crise
+9. Definir gatilhos de alerta para monitoramento pós-execução
+
+**Output Gerado:**
+```json
+{
+  "auditoria_risco_reputacional": {
+    "nivel_risco_geral": "BAIXO|MÉDIO|ALTO|CRÍTICO",
+    "mensagens_analisadas": [],
+    "riscos_identificados": [
+      {
+        "tipo": "legal|cultural|etico|polemico",
+        "descricao": "",
+        "gravidade": "baixa|media|alta|critica",
+        "probabilidade_ocorrencia": "baixa|media|alta",
+        "mensagem_problema": "",
+        "alternativa_sugerida": "",
+        "plano_mitigacao": ""
+      }
+    ],
+    "conformidade_legal": {
+      "regulamentacoes_aplicaveis": [],
+      "pontos_atencao": [],
+      "recomendacoes_juridicas": []
+    },
+    "sensibilidade_cultural": {
+      "pontos_verificados": [],
+      "alertas": [],
+      "recomendacoes_inclusivas": []
+    },
+    "plano_contingencia": {
+      "cenario_critico": "",
+      "acoes_imediatas": [],
+      "porta_voz_designado": "",
+      "timeline_resposta": ""
+    },
+    "gatilhos_monitoramento": [],
+    "parecer_final": "APROVADO | APROVADO COM RESSALVAS | REPROVADO"
+  }
+}
+```
+
+**Como ela se conecta com as outras:**
+- Alimenta: Tradutor Operacional de Estratégia, Gerador de Plano de Ação
+- Recebe de: Todas as skills de decisão e execução (mensagem, conteúdo, engenharia social)
+
+**Quando usar:**
+- ✅ SEMPRE antes de executar qualquer campanha de grande escala
+- ✅ Antes de lançamentos de produtos/serviços
+- ✅ Em respostas a crises ou críticas públicas
+- ✅ Em nichos altamente regulamentados (saúde, direito, finanças)
+- ✅ Quando o negócio tem visibilidade pública significativa
+
+**Quando NÃO usar:**
+- ❌ Nunca deixar de usar em contextos de alto risco
+- ⚠️ Pode ser simplificado em negócios muito pequenos e locais sem visibilidade
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- Módulo: POSICIONAMENTO (subseção: Gestão de Risco Reputacional)
+- Módulo: PLANO DE AÇÃO (subseção: Contingências e Crises)
+- Arquivo: `auditoria_risco_reputacional.json`
+- Arquivo: `plano_contingencia_crise.json`
+
+**Impacto no Negócio:** CRÍTICO  
+*Um único erro reputacional pode destruir anos de construção de marca em horas. Esta skill é o seguro estratégico do negócio.*
+
+---
+
+### SKILL 30: Tradutor Operacional de Estratégia
+
+**Nível de Prioridade:** NUCLEAR  
+**Tipo de Função:** DECIDE/EXECUTA  
+
+**Missão da Skill:**  
+Converter estratégias abstratas e planos conceituais em tarefas operacionais claras, acionáveis e delegáveis, com prazos realistas, responsáveis definidos e critérios de sucesso mensuráveis. É a ponte entre "o que fazer" e "como fazer".
+
+**O que ela analisa:**
+- Planos estratégicos gerados pelas skills de decisão
+- Recursos disponíveis (equipe, tempo, orçamento, ferramentas)
+- Capacidade operacional atual do negócio
+- Complexidade de cada tarefa proposta
+- Dependências entre tarefas
+- Prioridades conflitantes
+
+**Input Necessário:**
+- Output do Gerador de Plano de Ação Simplificado
+- Output do Planejador de Conteúdo Estratégico
+- Output do Gerador de Roadmap Trimestral
+- Output do Auditor de Risco Reputacional
+- Inventário de recursos (equipe, tempo, orçamento)
+- Ferramentas disponíveis (software, plataformas, etc.)
+
+**Processo Interno:**
+1. Desmontar estratégias em componentes atômicos
+2. Transformar cada componente em tarefa executável
+3. Definir critério de "pronto" claro para cada tarefa
+4. Estimar tempo realista de execução (com margem de erro)
+5. Identificar dependências e sequência lógica
+6. Atribuir responsabilidades (ou perfis necessários)
+7. Priorizar por impacto x esforço (matriz Eisenhower)
+8. Criar checklist executivo para cada frente
+9. Definir métricas de acompanhamento semanal
+10. Estabelecer rituais de revisão e ajuste
+
+**Output Gerado:**
+```json
+{
+  "traducao_operacional": {
+    "checklist_executivo": [
+      {
+        "frente_estrategica": "",
+        "tarefas": [
+          {
+            "id": "",
+            "descricao_acao": "",
+            "criterio_pronto": "",
+            "tempo_estimado_horas": 0,
+            "prazo_limite": "",
+            "responsavel_sugerido": "",
+            "perfil_necessario": "",
+            "dependencias": [],
+            "prioridade": "P1|P2|P3",
+            "impacto_esperado": "alto|medio|baixo",
+            "esforco": "alto|medio|baixo",
+            "ferramentas_necessarias": [],
+            "metrica_sucesso": "",
+            "status": "pendente|em_progresso|concluida"
+          }
+        ]
+      }
+    ],
+    "cronograma_semanal": {
+      "semana_1": [],
+      "semana_2": [],
+      "semana_3": [],
+      "semana_4": []
+    },
+    "matriz_priorizacao": {
+      "fazer_agora": [],
+      "agendar": [],
+      "delegar": [],
+      "eliminar": []
+    },
+    "recursos_necessarios": {
+      "humanos": [],
+      "financeiros": 0,
+      "ferramentas": [],
+      "tempo_total_semanal_horas": 0
+    },
+    "rituais_gestao": {
+      "revisao_semanal": "dia_da_semana",
+      "metricas_acompanhamento": [],
+      "gatilhos_ajuste": []
+    }
+  }
+}
+```
+
+**Como ela se conecta com as outras:**
+- Alimenta: Execução direta pela equipe, Orquestrador de Inteligência Contínua
+- Recebe de: Todas as skills de decisão (Plano de Ação, Roadmap, Conteúdo, etc.)
+
+**Quando usar:**
+- ✅ SEMPRE que uma estratégia for aprovada e precisar sair do papel
+- ✅ Na transição entre planejamento e execução
+- ✅ Quando há equipe envolvida na implementação
+- ✅ Para evitar que estratégias morram na gaveta
+
+**Quando NÃO usar:**
+- ❌ Nunca pular esta etapa se houver equipe envolvida
+- ⚠️ Pode ser simplificado para profissionais solo, mas ainda é essencial
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- Módulo: PLANO DE AÇÃO (subseção: Checklist Operacional)
+- Módulo: PRIORIDADES (subseção: Matriz de Execução)
+- Arquivo: `checklist_executivo.json`
+- Arquivo: `cronograma_operacional.json`
+- Arquivo: `matriz_priorizacao.json`
+
+**Impacto no Negócio:** CRÍTICO  
+*Estratégias sem tradução operacional são apenas sonhos. Esta skill transforma visão em realidade executável.*
+
+---
+
+### SKILL 31: Detector de Estagnação & Pivotagem
+
+**Nível de Prioridade:** IMPORTANTE  
+**Tipo de Função:** INTERPRETA/DECIDE  
+
+**Missão da Skill:**  
+Monitorar sinais de estagnação, saturação de estratégia, queda de performance e ineficiência crescente, identificando o momento exato para pivotar (mudar direção radicalmente) em vez de apenas otimizar. Atua como um "sistema de alerta precoce" contra a irrelevância.
+
+**O que ela analisa:**
+- Métricas de performance ao longo do tempo (tendências, não pontos isolados)
+- Taxa de engajamento e conversão em declínio
+- Saturação de audiência (mesmo público, mesmas mensagens)
+- Mudanças no comportamento do mercado
+- Emergência de novos concorrentes ou modelos
+- Fadiga de conteúdo (queda orgânica consistente)
+- Custo de aquisição crescente com retorno decrescente
+- Feedback qualitativo do público (tédio, desinteresse)
+
+**Input Necessário:**
+- Histórico de métricas (mínimo 3-6 meses)
+- Output do Monitor de Evolução de Mercado
+- Output do Otimizador de Funil
+- Output do Pesquisador de Intenção de Busca
+- Feedback direto do público (comentários, DMs, pesquisas)
+- Dados de concorrência emergente
+
+**Processo Interno:**
+1. Analisar tendências de métricas-chave (não valores absolutos)
+2. Identificar padrões de declínio consistente (3+ períodos consecutivos)
+3. Detectar sinais de saturação de audiência/mensagem
+4. Comparar performance com benchmarks do nicho
+5. Avaliar custo de oportunidade de continuar vs. pivotar
+6. Identificar direções alternativas viáveis (novos públicos, ofertas, canais)
+7. Calcular "ponto de inflexão" recomendado
+8. Gerar cenário de "continuar otimizando" vs "pivotar radicalmente"
+9. Criar plano de transição se pivotagem for recomendada
+10. Definir métricas de alerta para monitoramento contínuo
+
+**Output Gerado:**
+```json
+{
+  "detector_estagnacao_pivotagem": {
+    "status_geral": "SAUDAVEL | ATENCAO | ALERTA | CRITICO",
+    "sinais_estagnacao": [
+      {
+        "tipo": "engagement_decline|conversion_drop|saturation|market_shift|content_fatigue",
+        "descricao": "",
+        "gravidade": "baixa|media|alta",
+        "periodo_detectado": "",
+        "tendencia": "piorando|estavel|melhorando"
+      }
+    ],
+    "metricas_alerta": {
+      "engajamento_queda_percentual": 0,
+      "conversao_queda_percentual": 0,
+      "custo_aquisicao_alta_percentual": 0,
+      "saturacao_audiencia_percentual": 0
+    },
+    "recomendacao": "CONTINUAR_OTIMIZANDO | PREPARAR_PIVOT | PIVOTAR_AGORA",
+    "direcoes_pivotagem": [
+      {
+        "tipo": "novo_publico|nova_oferta|novo_canal|reposicionamento",
+        "descricao": "",
+        "viabilidade": "baixa|media|alta",
+        "esforco_estimado": "baixo|medio|alto",
+        "impacto_potencial": "baixo|medio|alto",
+        "timeline_recomendada": ""
+      }
+    ],
+    "plano_transicao": {
+      "acoes_imediatas": [],
+      "acoes_30_dias": [],
+      "acoes_60_dias": [],
+      "metricas_sucesso_transicao": []
+    },
+    "cenario_nao_acao": {
+      "projecao_6_meses": "",
+      "riscos": []
+    }
+  }
+}
+```
+
+**Como ela se conecta com as outras:**
+- Alimenta: Orquestrador de Inteligência Contínua, Gerador de Roadmap Trimestral
+- Recebe de: Monitor de Evolução de Mercado, Otimizador de Funil, Todas as skills de métrica
+
+**Quando usar:**
+- ✅ Quando métricas mostram declínio consistente por 3+ meses
+- ✅ Antes de investir pesado em otimizações incrementais
+- ✅ Em revisões trimestrais de estratégia
+- ✅ Quando há sensação de "teto" ou estagnação
+- ✅ Ao identificar novos concorrentes disruptivos
+
+**Quando NÃO usar:**
+- ❌ Em negócios com menos de 6 meses de operação (ainda é cedo)
+- ❌ Para quedas sazonais esperadas e temporárias
+- ❌ Quando a queda é causada por fatores externos pontuais (ex: crise global)
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- Módulo: PRIORIDADES (subseção: Alertas de Estagnação)
+- Módulo: PLANO DE AÇÃO (subseção: Planos de Pivotagem)
+- Módulo: EVOLUÇÃO DE MERCADO (subseção: Tendências de Longo Prazo)
+- Arquivo: `detector_estagnacao.json`
+- Arquivo: `plano_pivotagem.json`
+
+**Impacto no Negócio:** ALTO  
+*Identificar o momento de pivotar pode salvar um negócio da irrelevância. Continuar otimizando uma estratégia morta é desperdício de recursos.*
+
+---
+
+### SKILL 32: Orquestrador de Inteligência Contínua
+
+**Nível de Prioridade:** NUCLEAR  
+**Tipo de Função:** ORGANIZA/DECIDE  
+
+**Missão da Skill:**  
+Coordenar o ciclo automático de coleta-interpretação-decisão-ação, garantindo que o sistema se auto-alimente, atualize a base de conhecimento, dispare reavaliações periódicas e mantenha a inteligência sempre fresca e acionável. É o "cérebro" que orquestra todo o ecossistema.
+
+**O que ela analisa:**
+- Estado atual de todos os módulos da base
+- Gatilhos de reavaliação (tempo, performance, mercado)
+- Outputs de todas as skills executadas
+- Lacunas de informação na base
+- Prioridades conflitantes entre diferentes frentes
+- Necessidade de novas rodadas de análise
+
+**Input Necessário:**
+- Outputs de TODAS as skills executadas anteriormente
+- Base de conhecimento consolidada
+- Calendário de revisões periódicas
+- Gatilhos de evento (lançamentos, crises, mudanças de mercado)
+
+**Processo Interno:**
+1. Consolidar outputs de todas as skills em visão unificada
+2. Atualizar base de conhecimento com novas informações
+3. Identificar lacunas ou inconsistências nos dados
+4. Disparar gatilhos para re-execução de skills específicas quando necessário
+5. Priorizar próximas ações com base em impacto x urgência
+6. Agendar revisões periódicas (semanal, mensal, trimestral)
+7. Manter histórico de evolução das decisões e resultados
+8. Gerar resumo executivo do estado atual do negócio
+9. Sinalizar necessidade de intervenção humana em pontos críticos
+
+**Output Gerado:**
+```json
+{
+  "orquestracao_inteligencia_continua": {
+    "estado_atual_sistema": {
+      "ultima_atualizacao": "",
+      "modulos_atualizados": [],
+      "lacunas_identificadas": [],
+      "confiabilidade_dados": "baixa|media|alta"
+    },
+    "ciclo_proximo": {
+      "skills_a_executar": [],
+      "gatilho_disparo": "tempo|performance|evento",
+      "data_prevista": "",
+      "prioridade": "baixa|media|alta"
+    },
+    "resumo_executivo": {
+      "status_geral_negocio": "",
+      "principais_oportunidades": [],
+      "principais_riscos": [],
+      "proximas_acoes_criticas": []
+    },
+    "historico_decisoes": [
+      {
+        "data": "",
+        "decisao": "",
+        "base_skill": "",
+        "resultado_esperado": "",
+        "resultado_real": "",
+        "aprendizado": ""
+      }
+    ],
+    "gatilhos_alerta": [
+      {
+        "condicao": "",
+        "skill_relacionada": "",
+        "acao_disparada": ""
+      }
+    ],
+    "agenda_revisoes": {
+      "semanal": {
+        "dia": "",
+        "foco": []
+      },
+      "mensal": {
+        "dia": "",
+        "foco": []
+      },
+      "trimestral": {
+        "semana": "",
+        "foco": []
+      }
+    }
+  }
+}
+```
+
+**Como ela se conecta com as outras:**
+- **Conecta-se com TODAS as skills** (é o hub central)
+- Recebe outputs de todas as skills
+- Dispara re-execução de skills específicas quando necessário
+- Mantém a base de conhecimento atualizada
+
+**Quando usar:**
+- ✅ CONTINUAMENTE - é uma skill de execução permanente
+- ✅ Após cada rodada de análise estratégica
+- ✅ Em revisões periódicas (semanal, mensal, trimestral)
+- ✅ Quando há mudanças significativas no negócio ou mercado
+
+**Quando NÃO usar:**
+- ❌ Nunca desativar em negócios que buscam inteligência contínua
+- ⚠️ Pode ser simplificado para operações muito pequenas, mas ainda é essencial
+
+**Qual base, arquivo ou módulo ela alimenta:**
+- **TODOS OS MÓDULOS DA BASE** (é o principal alimentador)
+- Arquivo: `orquestracao_estado.json`
+- Arquivo: `historico_decisoes.json`
+- Arquivo: `agenda_revisoes.json`
+- Arquivo: `base_conhecimento_consolidada.json`
+
+**Impacto no Negócio:** CRÍTICO  
+*Sem orquestração contínua, a inteligência fica obsoleta em semanas. Esta skill garante que o sistema viva e evolua com o negócio.*
+
+---
+
+# 7. ESTRUTURA DA BASE DE INFORMAÇÕES
 
 Estes módulos devem existir em QUALQUER configuração do sistema:
 
@@ -2602,6 +3265,11 @@ Cada registro recebe score 0-10 de quão acionável é. Registros com score < 3 
 | 25 | Monitor de Evolução de Mercado | OPCIONAL | INTERPRETA | Linha de base + dados contínuos | Mudanças identificadas + ajustes | MÉDIO | EVOLUÇÃO DE MERCADO |
 | 26 | Gerador de Roadmap Trimestral | OPCIONAL | EXECUTA | Prioridades + objetivos | Roadmap de 90 dias com marcos | ALTO | PLANO DE AÇÃO |
 | 27 | Auditor de Coerência Geral | OPCIONAL | INTERPRETA | Todos os módulos da base | Índice de coerência + incoerências | ALTO | COERÊNCIA |
+| 28 | Estrategista de Engenharia Social Profunda | IMPORTANTE | DECIDE/EXECUTA | Base engenharia social + público | Campanhas coordenadas de influência | ALTO | POSICIONAMENTO, PLANO DE AÇÃO |
+| 29 | **Auditor de Risco Reputacional** | **NUCLEAR** | **INTERPRETA/DECIDE** | **Mensagens + campanhas planejadas** | **Parecer de risco + plano contingência** | **CRÍTICO** | **POSICIONAMENTO, PLANO DE AÇÃO** |
+| 30 | **Tradutor Operacional de Estratégia** | **NUCLEAR** | **DECIDE/EXECUTA** | **Planos estratégicos + recursos** | **Checklist executivo + cronograma** | **CRÍTICO** | **PLANO DE AÇÃO, PRIORIDADES** |
+| 31 | **Detector de Estagnação & Pivotagem** | **IMPORTANTE** | **INTERPRETA/DECIDE** | **Histórico métricas + mercado** | **Recomendação pivotar + direções** | **ALTO** | **PRIORIDADES, PLANO DE AÇÃO** |
+| 32 | **Orquestrador de Inteligência Contínua** | **NUCLEAR** | **ORGANIZA/DECIDE** | **Todos outputs + base consolidada** | **Ciclo próximo + resumo executivo** | **CRÍTICO** | **TODOS OS MÓDULOS** |
 
 ---
 
