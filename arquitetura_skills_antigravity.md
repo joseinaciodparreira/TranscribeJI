@@ -38,6 +38,58 @@ O **Sistema Antigravity** é um ecossistema modular de skills projetado para tra
 
 ---
 
+# 1.5 COMO ATIVAR O SISTEMA (COMANDOS)
+
+O sistema foi desenhado para ser acionado de forma extremamente simples. Não é necessário decorar nomes de skills individuais para o uso diário.
+
+## 1.5.1 COMANDO MESTRE (RECOMENDADO)
+
+Para executar todo o fluxo de inteligência automaticamente, use apenas:
+
+```
+/scanner-ji [LINK OU NOME DO NEGÓCIO]
+```
+
+**Exemplos de uso:**
+*   `/scanner-ji https://instagram.com/minhaclinica`
+*   `/scanner-ji Dentista Implantes SP`
+*   `/scanner-ji Consultoria Financeira Rio`
+
+**O que acontece ao usar este comando:**
+O orquestrador dispara automaticamente a **Stack Mínima** (8 skills nucleares) em sequência lógica:
+1.  **Triagem:** Entende o nicho e oferta.
+2.  **Scan:** Varre site, redes e Google.
+3.  **Base:** Organiza os dados coletados.
+4.  **Interpretação:** Identifica padrões do cenário.
+5.  **Mineração:** Encontra oportunidades e gargalos.
+6.  **Posicionamento:** Define direção estratégica.
+7.  **Priorização:** Ordena o que fazer primeiro.
+8.  **Plano:** Gera o plano de ação prático.
+
+**Tempo estimado de resposta:** 2-5 minutos (dependendo da profundidade da varredura).  
+**Resultado:** Um relatório estratégico completo com prioridades e próximos passos.
+
+---
+
+## 1.5.2 COMANDOS MODULARES (OPCIONAL)
+
+Caso você já tenha os dados e queira rodar apenas uma etapa específica, pode chamar a skill diretamente:
+
+| Skill | Comando Direto | Quando Usar |
+| :--- | :--- | :--- |
+| Triagem Rápida | `/skill-triagem` | Apenas para definir o escopo do negócio. |
+| Scan Digital | `/skill-scan` | Para auditar presença digital existente. |
+| Organizador de Base | `/skill-base` | Para organizar dados já coletados manualmente. |
+| Interpretador | `/skill-interpretador` | Para analisar cenário de uma base pronta. |
+| Minerador | `/skill-minerador` | Para achar oportunidades em uma base pronta. |
+| Posicionamento | `/skill-posicionamento` | Para definir/revisar posicionamento. |
+| Priorizador | `/skill-priorizador` | Para ordenar ações de uma lista existente. |
+| Plano de Ação | `/skill-plano` | Para transformar insights em tarefas. |
+
+> **Nota:** Para 95% dos casos, use apenas o comando mestre `/scanner-ji`. Os comandos modulares são para ajustes finos ou testes específicos.
+
+---
+
 # 2. LÓGICA DE FUNCIONAMENTO DO ECOSSISTEMA
 
 ## 2.1 Ciclo de Inteligência Contínua
