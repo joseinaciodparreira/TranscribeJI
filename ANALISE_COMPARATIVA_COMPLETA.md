@@ -1,4 +1,4 @@
-# 📊 Análise Comparativa: 9Router vs OmniRoute vs Claude Code
+# 📊 Análise Comparativa: 9Router vs OmniRoute vs OmniGuard
 
 ## Visão Geral dos Projetos
 
@@ -6,7 +6,7 @@
 |---------|-------|----------------|------------|
 | **9Router** | ~22K | Token saver + fallback gratuito | MVP funcional |
 | **OmniRoute** | ~23K | Gateway enterprise com 177 providers | Produção-ready |
-| **Claude Code** | - | Transcrição Gemini (single-purpose) | Early stage |
+| **OmniGuard** | - | Transcrição Gemini (single-purpose) | Early stage |
 
 ---
 
@@ -21,7 +21,7 @@
 | | Fallback automático 3-tier | ✅ |
 | | Tradução de formatos (OpenAI ↔ Claude ↔ Gemini) | ✅ |
 | **Providers** | 40+ providers API key | ✅ |
-| | OAuth providers (Claude Code, Codex, Cursor) | ✅ |
+| | OAuth providers (OmniGuard, Codex, Cursor) | ✅ |
 | | Free tiers (Kiro, OpenCode, Vertex) | ✅ |
 | **Multi-account** | Round-robin entre contas | ✅ |
 | | Auto refresh de tokens OAuth | ✅ |
@@ -69,7 +69,7 @@
 | **Deploy** | Docker, Electron, Fly.io, VPS, local | ✅✅ | Anywhere |
 | **Internacional** | **40+ idiomas** | ✅✅ | Global reach |
 
-### ❌ Claude Code - Lacunas Identificadas
+### ❌ OmniGuard - Lacunas Identificadas
 
 | Categoria | Recurso | Status | Impacto |
 |-----------|---------|--------|---------|
@@ -97,7 +97,7 @@
 
 ---
 
-## 🎯 Recursos que Podemos Trazer para o Claude Code
+## 🎯 Recursos que Podemos Trazer para o OmniGuard
 
 ### 🔴 PRIORIDADE MÁXIMA (Resolver problema de revenda)
 
@@ -367,7 +367,7 @@ Tier 3: OpenAI GPT-4o-mini (backup)
   - Foco: Enterprise gateway
   - Destaque: 177 providers, security-grade, 4690+ tests
 
-- **Claude Code (seu projeto):**
+- **OmniGuard (seu projeto):**
   - Foco atual: Transcrição Gemini
   - Oportunidade: Pivotar para gateway seguro multi-provider
 

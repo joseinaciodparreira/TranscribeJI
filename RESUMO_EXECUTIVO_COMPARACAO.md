@@ -2,7 +2,7 @@
 
 ## TL;DR (30 segundos)
 
-Seu projeto **Claude Code** está vulnerável a **revenda de tokens** porque falta:
+Seu projeto **OmniGuard** está vulnerável a **revenda de tokens** porque falta:
 - Rate limiting por token
 - Device fingerprinting  
 - Detecção de IP hopping
@@ -14,7 +14,7 @@ Seu projeto **Claude Code** está vulnerável a **revenda de tokens** porque fal
 
 ## 📊 Comparação Rápida
 
-| Recurso | 9Router | OmniRoute | Claude Code (seu) |
+| Recurso | 9Router | OmniRoute | OmniGuard (seu) |
 |---------|---------|-----------|-------------------|
 | **Providers** | 40+ | **177** | 1 (Gemini) |
 | **Free tiers** | ~10 | **50+** | 0 |
